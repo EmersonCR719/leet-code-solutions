@@ -8,11 +8,9 @@ public class Main {
 
         Arrays arr = new Arrays();
 
-        int[] nums1 = {2,6,4};
+        int[] nums1 = {1,2,3};
 
-        int[] nums2 = {9,7,5};
-
-        System.out.println(arr.addedInteger(nums1, nums2));
+        int[] nums2 = {2,4,6};
 
     }
 }

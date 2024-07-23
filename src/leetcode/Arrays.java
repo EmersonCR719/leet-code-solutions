@@ -1848,43 +1848,6 @@ public class Arrays {
         return answer;
     }
 
-    public List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
-
-        List<List<Integer>> answer = new ArrayList<>();
-
-        List<Integer> arr = new ArrayList<>();
-
-        for (int i = 0; i < nums1.length - 1; i++) {
-
-            for (int j = 0; j < nums2.length; j++) {
-
-                if (nums1[i] != nums2[j] && nums1[i] != nums1[i + 1]) {
-                    arr.add(nums1[i]);
-                }
-
-            }
-        }
-        // ESTÁ MAL
-        answer.add(arr);
-
-        arr.clear();
-
-        for (int i = 0; i < nums2.length - 1; i++) {
-
-            for (int j = 0; j < nums1.length; j++) {
-
-                if (nums2[i] != nums1[j] && nums1[i] != nums1[i + 1]) {
-                    arr.add(nums2[i]);
-                }
-
-            }
-        }
-
-        answer.add(arr);
-
-        return answer;
-    }
-
     public int sumOfUnique(int[] nums) {
 
         int sum = 0;
@@ -2351,6 +2314,58 @@ public class Arrays {
         }
 
         return minAverage;
+    }
+
+    public List<Integer> luckyNumbers (int[][] matrix) {
+
+        /*
+        [3,7,8],
+        [9,11,13],
+        [15,16,17]]
+        */
+
+        return new ArrayList<>();
+    }
+
+    public List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
+
+        List<List<Integer>> answer = new ArrayList<>();
+
+        List<Integer> arr1 = new ArrayList<>();
+        List<Integer> arr2 = new ArrayList<>();
+
+        Map<Integer, Integer> map1 = new HashMap<>();
+        Map<Integer, Integer> map2 = new HashMap<>();
+
+        for (int i = 0; i < nums1.length; i++) {
+            map1.put(nums1[i], i);
+            map2.put(nums2[i], i);
+        }
+
+        for (int i = 0; i < nums1.length; i++) {
+            if (!map1.containsKey(nums2[i])){
+                arr1.add(nums2[i]);
+            }
+            if (!map2.containsKey(nums1[i])){
+                arr2.add(nums1[i]);
+            }
+        }
+
+        answer.add(arr2);
+        answer.add(arr1);
+
+        return answer;
+    }
+
+    public int[] sortByBits(int[] arr) {
+        int[] answer;
+        // Convertimos el arreglo de enteros a un arreglo de Integer para usar Arrays.sort con un Comparator
+        Integer[] arrInteger = java.util.Arrays.stream(arr).boxed().toArray(Integer[]::new);
+        // Ordenamos el arreglo usando un comparador personalizado
+        java.util.Arrays.sort(arrInteger, Comparator.comparingInt(Integer::bitCount).thenComparingInt(a -> a));
+        // Convertimos el arreglo ordenado de vuelta a un arreglo de enteros
+        answer = java.util.Arrays.stream(arrInteger).mapToInt(Integer::intValue).toArray();
+        return answer;
     }
 
 

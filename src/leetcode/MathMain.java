@@ -6,7 +6,7 @@ public class MathMain {
 
         MathAlgoritms mathAlgoritms = new MathAlgoritms();
 
-        int[] nums = {2,4,3,7,10,6};
+        int[] nums = {1,2,3,4,5,6,7};
         int k = 34;
 
 //        System.out.println(mathAlgoritms.smallestValue(2 * 2 * 3 * 3 * 5 * 7 * 11 * 11 * 13));
@@ -15,6 +15,6 @@ public class MathMain {
 
 //        System.out.println(mathAlgoritms.distinctPrimeFactors(nums));
 
-        System.out.println(mathAlgoritms.distinctPrimeFactors(nums));
+        mathAlgoritms.rotate(nums,3);
     }
 }

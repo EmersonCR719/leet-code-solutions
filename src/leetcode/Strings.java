@@ -386,25 +386,6 @@ public class Strings {
         return answer;
     }
 
-    public String reverseWords(String s) {
-
-        StringBuilder sb = new StringBuilder();
-
-        for (int i = 0; i < s.length()-1; i++) {
-            if (i == 0 && s.charAt(i) == ' ') {
-                i++;
-            }
-            sb.append(s.charAt(i));
-            if (s.charAt(i) == ' ' && s.charAt(i + 1) == ' ') {
-                i += 2;
-            }
-        }
-
-        System.out.println(sb);
-
-        return "";
-    }
-
     public void reverseString(char[] s) {
         int low = 0;
         int hight = s.length - 1;
@@ -435,6 +416,32 @@ public class Strings {
         }
 
         return asnwer;
+    }
+
+    public String reverseWords(String s) {
+
+        String[] words = s.trim().split("\\s+");
+
+        StringBuilder sb = new StringBuilder();
+
+        int i = words.length - 1;
+
+        while (i > 0){
+            if (!words[i].equals(" ")){
+                sb.append(words[i].trim()).append(" ");
+            }
+            i--;
+        }
+
+        return sb.append(words[0]).toString();
+    }
+
+    public int strStr(String haystack, String needle) {
+        return haystack.indexOf(needle);
+    }
+
+    public String longestCommonPrefix(String[] strs) {
+        return "";
     }
 
 }
