@@ -7,12 +7,14 @@ public class StringMain {
 
         Strings strings = new Strings();
 
-        String s = "the sky is blue";
+        String s = "cat cat cat dog";
         int[] students = {1,1,0,0}, sandwiches = {0,1,0,1};
 
         String str = "abc", t = "bac";
 
-        System.out.println(strings.findPermutationDifference(str,t));
+        String pattern = "aba";
+
+        System.out.println(strings.wordPattern(pattern,s));
 
     }
 

@@ -567,4 +567,34 @@ public class MathAlgoritms {
         }
     }
 
+    public int romanToInt(String s) {
+        /*
+        Symbol       Value
+        I             1
+        V             5
+        X             10
+        L             50
+        C             100
+        D             500
+        M             1000
+         */
+        Map<String, Integer> romans = new HashMap<>();
+        romans.put("I", 1);
+        romans.put("V", 5);
+        romans.put("X", 10);
+        romans.put("L", 50);
+        romans.put("C", 100);
+        romans.put("D", 500);
+        romans.put("M", 1000);
+
+        for (int i = 0; i < s.length() - 1; i++) {
+            if (s.charAt(i) != s.charAt(i + 1)) {
+
+            }
+        }
+        
+
+        return 0;
+    }
+
 }

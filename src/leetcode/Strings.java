@@ -1,5 +1,6 @@
 package leetcode;
 
+import java.sql.SQLOutput;
 import java.util.*;
 import java.util.Arrays;
 
@@ -347,18 +348,18 @@ public class Strings {
 
         for (int i = 0; i < students.length; i++) {
             studentQueue.offer(students[i]);
-            sandwichStack.push(sandwiches[sandwiches.length-1 - i]);
+            sandwichStack.push(sandwiches[sandwiches.length - 1 - i]);
         }
 
         int i = 0;
 
         while (!studentQueue.isEmpty() && i < sandwichStack.size()) {
 
-            if (studentQueue.peek() == sandwichStack.peek()){
+            if (studentQueue.peek() == sandwichStack.peek()) {
                 sandwichStack.pop();
                 studentQueue.poll();
                 i = 0;
-            }else {
+            } else {
                 studentQueue.offer(studentQueue.poll());
                 i++;
             }
@@ -371,7 +372,7 @@ public class Strings {
 
         int time = 0, i = 0, n = tickets.length;
 
-        while (tickets[k] > 0){
+        while (tickets[k] > 0) {
             if (tickets[i] != 0) tickets[i]--;
             time++;
             i++;
@@ -391,7 +392,7 @@ public class Strings {
         int hight = s.length - 1;
         int iterator = 0;
         //s = ["h","e","l","l","o"]
-        while(iterator <= hight){
+        while (iterator <= hight) {
             char swap = s[iterator];
             s[low] = s[hight];
             s[hight] = swap;
@@ -403,12 +404,12 @@ public class Strings {
 
     public int findPermutationDifference(String s, String t) {
 
-        HashMap<Character,Integer> map = new HashMap<>();
+        HashMap<Character, Integer> map = new HashMap<>();
 
-        int asnwer  = 0;
+        int asnwer = 0;
 
         for (int i = 0; i < s.length(); i++) {
-            map.put(s.charAt(i),i);
+            map.put(s.charAt(i), i);
         }
 
         for (int i = 0; i < t.length(); i++) {
@@ -426,8 +427,8 @@ public class Strings {
 
         int i = words.length - 1;
 
-        while (i > 0){
-            if (!words[i].equals(" ")){
+        while (i > 0) {
+            if (!words[i].equals(" ")) {
                 sb.append(words[i].trim()).append(" ");
             }
             i--;
@@ -441,7 +442,98 @@ public class Strings {
     }
 
     public String longestCommonPrefix(String[] strs) {
-        return "";
+
+        if (strs.length == 0) return "";
+
+        String base = strs[0];
+
+        for (int i = 1; i < strs.length; i++) {
+            while (strs[i].indexOf(base) != 0) {
+                base = base.substring(0, base.length() - 1);
+            }
+        }
+
+        return base;
+    }
+
+    public boolean isPalindrome(String s) {
+
+        if (s.isEmpty()) return true;
+
+        String sLowerCase = s.toLowerCase();
+
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < sLowerCase.length(); i++) {
+            if ((sLowerCase.charAt(i) >= 97 && sLowerCase.charAt(i) <= 122) ||
+                    (sLowerCase.charAt(i) >= 48 && sLowerCase.charAt(i) <= 57)) {
+                sb.append(sLowerCase.charAt(i));
+            }
+        }
+
+        int i = 0, j = sb.length() - 1;
+        while (i < j) {
+            if (sb.charAt(i) != sb.charAt(j)) {
+                return false;
+            }
+            i++;
+            j--;
+        }
+
+        return true;
+    }
+
+    public boolean isSubsequence(String s, String t) {
+
+        int i = 0, j = 0;
+
+        while (i < s.length() || j < t.length()) {
+            if (s.charAt(i) == t.charAt(j)) {
+                i++;
+                j++;
+            } else {
+                j++;
+            }
+        }
+
+        return i == s.length();
+    }
+
+    public int appendCharacters(String s, String t) {
+        int i = 0, j = 0, n = s.length(), m = t.length();
+        while (i < n && j < m) {
+            if (t.charAt(j) == s.charAt(i)) {
+                i++;
+                j++;
+            } else {
+                i++;
+            }
+        }
+        return m - j;
+    }
+
+    public boolean wordPattern(String pattern, String s) {
+
+        Map<Character, String> map = new HashMap<>();
+        
+        String[] words = s.split("\\s+");
+
+        if (words.length != pattern.length()) return false;
+
+        for (int i = 0; i < pattern.length(); i++) {
+            if (map.containsKey(pattern.charAt(i))) {
+                if (!map.get(pattern.charAt(i)).equals(words[i])) {
+                    return false;
+                }
+            } else {
+                if (map.containsValue(words[i])) {
+                    return false;
+                }
+                map.put(pattern.charAt(i), words[i]);
+            }
+        }
+
+        return true;
     }
 
 }

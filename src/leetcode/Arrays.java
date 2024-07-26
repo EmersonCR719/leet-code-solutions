@@ -1712,20 +1712,6 @@ public class Arrays {
         }
     }
 
-    public int[] productExceptSelf(int[] nums) {
-
-        int[] answer = new int[nums.length];
-
-        int product = 1;
-
-        for (int i = 0; i < nums.length; i++) {
-
-
-        }
-
-        return answer;
-    }
-
     public int sumIndicesWithKSetBits(List<Integer> nums, int k) {
 
         int answer = 0;
@@ -2368,5 +2354,49 @@ public class Arrays {
         return answer;
     }
 
+    public int[] productExceptSelf(int[] nums) {
 
+        int[] left = new int[nums.length];
+
+        int[] right = new int[nums.length];
+
+        left[0] = 1;
+        for (int i = 1; i < nums.length; i++) {
+            left[i] = left[i - 1] * nums[i - 1];
+        }
+
+        right[nums.length - 1] = 1;
+        for (int i = nums.length - 2; i > -1; i--) {
+            right[i] = right[i + 1] * nums[i + 1];
+        }
+
+        int[] answer = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            answer[i] = left[i] * right[i];
+        }
+
+        return answer;
+    }
+
+    public int minSubArrayLen(int target, int[] nums) {
+
+        int n = nums.length;
+        int minLength = Integer.MAX_VALUE; // Inicializar con un valor grande
+        int sum = 0; // Suma actual del subarray
+        int left = 0; // Límite izquierdo de la ventana
+
+        for (int right = 0; right < n; right++) {
+            sum += nums[right];
+
+            // Mientras la suma sea mayor o igual al objetivo, ajustar la ventana
+            while (sum >= target) {
+                minLength = Math.min(minLength, right - left + 1);
+                sum -= nums[left];
+                left++;
+            }
+        }
+
+        // Si no se encuentra tal subarray, devolver 0
+        return (minLength == Integer.MAX_VALUE) ? 0 : minLength;
+    }
 }
