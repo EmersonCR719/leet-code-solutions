@@ -567,34 +567,32 @@ public class MathAlgoritms {
         }
     }
 
-    public int romanToInt(String s) {
-        /*
-        Symbol       Value
-        I             1
-        V             5
-        X             10
-        L             50
-        C             100
-        D             500
-        M             1000
-         */
-        Map<String, Integer> romans = new HashMap<>();
-        romans.put("I", 1);
-        romans.put("V", 5);
-        romans.put("X", 10);
-        romans.put("L", 50);
-        romans.put("C", 100);
-        romans.put("D", 500);
-        romans.put("M", 1000);
+    public double myPow(double x, int n) {
 
-        for (int i = 0; i < s.length() - 1; i++) {
-            if (s.charAt(i) != s.charAt(i + 1)) {
+        double ans = 1;
 
+        if (x == 0 || x == 1) return x;
+        if (n == 0) return 1;
+        else {
+            if (Math.abs(n) % 2 == 0) {
+                if (x == -1) return 1;
+                for (int i = 0; i < Math.abs(n) / 2; i++) {
+                    ans *= x;
+                    ans *= x;
+                }
+            }else{
+                if (x == -1) return 1;
+                for (int i = 0; i < Math.abs(n) / 2; i++) {
+                    ans *= x;
+                    ans *= x;
+                }
+                ans = ans * x;
             }
         }
-        
-
-        return 0;
+        if (ans == 1) return 0;
+        return (n > 0)? ans : (1/ans);
     }
+
+
 
 }

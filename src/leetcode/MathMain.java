@@ -15,6 +15,6 @@ public class MathMain {
 
 //        System.out.println(mathAlgoritms.distinctPrimeFactors(nums));
 
-        mathAlgoritms.rotate(nums,3);
+        System.out.println(mathAlgoritms.myPow(0.00001,-2));
     }
 }

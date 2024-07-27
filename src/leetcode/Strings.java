@@ -536,4 +536,10 @@ public class Strings {
         return true;
     }
 
+    public int lengthOfLongestSubstring(String s) {
+
+
+        return 0;
+    }
+
 }
