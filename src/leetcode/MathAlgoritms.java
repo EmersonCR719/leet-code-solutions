@@ -509,7 +509,7 @@ public class MathAlgoritms {
 
         StringBuilder sb2 = new StringBuilder();
 
-        if (!sign.isEmpty()){
+        if (!sign.isEmpty()) {
             sb2.append(sign);
             sb2.append(sb);
         }
@@ -557,7 +557,7 @@ public class MathAlgoritms {
         System.out.println(Arrays.toString(nums));
     }
 
-    public void reverse(int[] nums, int start, int end){
+    public void reverse(int[] nums, int start, int end) {
         while (start <= end) {
             int temp = nums[start];
             nums[start] = nums[end];
@@ -580,7 +580,7 @@ public class MathAlgoritms {
                     ans *= x;
                     ans *= x;
                 }
-            }else{
+            } else {
                 if (x == -1) return 1;
                 for (int i = 0; i < Math.abs(n) / 2; i++) {
                     ans *= x;
@@ -590,9 +590,62 @@ public class MathAlgoritms {
             }
         }
         if (ans == 1) return 0;
-        return (n > 0)? ans : (1/ans);
+        return (n > 0) ? ans : (1 / ans);
     }
 
+    public int trailingZeroes(int n) {
 
+        if (n <= 4) return 0;
+
+        int divisor = 5;
+
+        double division = (double) n / divisor;
+
+        int sumZeroes = 0;
+        sumZeroes += (int) division;
+
+        while (division > 1) {
+            division /= divisor;
+            sumZeroes += (int) division;
+        }
+
+        return sumZeroes;
+    }
+
+    public boolean isHappy(int n) {
+        boolean exit = false;
+        int num = n;
+        while (!exit) {
+            int sumSquare = 0;
+            while (num != 0) {      //Calcular las cifras y sumar sus cuadrados
+                int lastDigit = num % 10;    //lastDigit tiene el residuo de la division de num entre 10.
+                sumSquare += lastDigit * lastDigit;
+                num = num / 10;
+            }
+            if (sumSquare >= 10) {
+                num = sumSquare;
+            } else {
+                if (sumSquare == 1 || sumSquare == 7) {
+                    return true;
+                }
+                exit = true;
+            }
+        }
+        return false;
+    }
+
+    public int maxPoints(int[][] points) {
+
+        int count = 0;
+
+        for (int i = 0; i < points.length; i++) {
+            for (int j = 0; j < points[i].length; j++) {
+                System.out.print(points[i][j]+" ");
+            }
+            System.out.println();
+        }
+
+        return count;
+    }
 
 }

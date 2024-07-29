@@ -15,6 +15,8 @@ public class MathMain {
 
 //        System.out.println(mathAlgoritms.distinctPrimeFactors(nums));
 
-        System.out.println(mathAlgoritms.myPow(0.00001,-2));
+        int[][] points = {{1,1},{2,2},{3,3}};
+
+        System.out.println(mathAlgoritms.isHappy(1111111));
     }
 }

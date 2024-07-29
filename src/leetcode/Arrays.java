@@ -2399,4 +2399,12 @@ public class Arrays {
         // Si no se encuentra tal subarray, devolver 0
         return (minLength == Integer.MAX_VALUE) ? 0 : minLength;
     }
+
+    public int maxProfit(int[] prices) {
+
+        int maxProfit = 0;
+        int currentSum = prices[0];
+
+        return 0;
+    }
 }
