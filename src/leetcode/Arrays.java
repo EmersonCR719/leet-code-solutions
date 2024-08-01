@@ -2400,11 +2400,20 @@ public class Arrays {
         return (minLength == Integer.MAX_VALUE) ? 0 : minLength;
     }
 
-    public int maxProfit(int[] prices) {
+    public int longestConsecutive(int[] nums) {
 
-        int maxProfit = 0;
-        int currentSum = prices[0];
+        if (nums.length == 0) return 0;
 
-        return 0;
+        int count = 1;
+
+        java.util.Arrays.sort(nums);
+
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] + 1 == nums[i + 1]) {
+                count++;
+            }
+        }
+        
+        return count;
     }
 }
