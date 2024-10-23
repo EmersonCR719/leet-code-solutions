@@ -2259,7 +2259,6 @@ public class Arrays {
         }
 
 
-
         return answer;
     }
 
@@ -2295,14 +2294,14 @@ public class Arrays {
 
         double minAverage = Double.MAX_VALUE;
 
-        for(double num : averages){
+        for (double num : averages) {
             minAverage = Math.min(minAverage, num);
         }
 
         return minAverage;
     }
 
-    public List<Integer> luckyNumbers (int[][] matrix) {
+    public List<Integer> luckyNumbers(int[][] matrix) {
 
         /*
         [3,7,8],
@@ -2329,10 +2328,10 @@ public class Arrays {
         }
 
         for (int i = 0; i < nums1.length; i++) {
-            if (!map1.containsKey(nums2[i])){
+            if (!map1.containsKey(nums2[i])) {
                 arr1.add(nums2[i]);
             }
-            if (!map2.containsKey(nums1[i])){
+            if (!map2.containsKey(nums1[i])) {
                 arr2.add(nums1[i]);
             }
         }
@@ -2413,8 +2412,25 @@ public class Arrays {
                 count++;
             }
         }
-        
+
         return count;
+    }
+
+    public int maxProfit(int[] prices) {
+
+        int cheapestPrice = prices[0];
+
+        int maxProfit = 0;
+
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] < cheapestPrice) {
+                cheapestPrice = prices[i];
+            } else if (prices[i] - cheapestPrice > maxProfit) {
+                maxProfit = prices[i] - cheapestPrice;
+            }
+        }
+
+        return maxProfit;
     }
 
 }
