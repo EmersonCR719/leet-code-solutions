@@ -2433,4 +2433,47 @@ public class Arrays {
         return maxProfit;
     }
 
+    public int[] findThePrefixCommonArray(int[] A, int[] B) {
+
+        int[] answer = new int[B.length];
+        int[] freq = new int[A.length + 1];
+        int count = 0;
+
+        for (int i = 0; i < A.length; i++) {
+            freq[A[i]]++;
+            if (freq[A[i]] == 2) count++;
+            freq[B[i]]++;
+            if (freq[B[i]] == 2) count++;
+            answer[i] = count;
+        }
+
+        return answer;
+    }
+
+    public int xorAllNums(int[] nums1, int[] nums2) {
+
+        int xorNum1 = 0, xorNum2 = 0;
+
+        for(int num : nums1) {
+            xorNum1 ^= num;
+        }
+
+        for(int num : nums2) {
+            xorNum2 ^= num;
+        }
+
+        int n1 = nums1.length;
+        int n2 = nums2.length;
+        int result = 0;
+
+        if (n1 % 2 == 1) {
+            result ^= xorNum1;
+        }
+
+        if (n2 % 2 == 1) {
+            result ^= xorNum2;
+        }
+
+        return result;
+    }
 }

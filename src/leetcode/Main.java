@@ -1,18 +1,18 @@
 package leetcode;
 
-import java.util.Collections;
-
 public class Main {
 
     public static void main(String[] args) {
 
         Arrays arr = new Arrays();
 
-        int[] nums1 = {7,1,5,3,6,4};
+        int[] nums1 = {1,2,3};
 
-        int[] nums2 = {2,4,6};
+        int[] nums2 = {3,1,2};
 
-        System.out.println(arr.maxProfit(nums1));
+        int[] answer = arr.findThePrefixCommonArray(nums1, nums2);
+
+        System.out.println(java.util.Arrays.toString(answer));
 
     }
 }
