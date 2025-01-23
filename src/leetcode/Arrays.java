@@ -1206,31 +1206,6 @@ public class Arrays {
         return answer;
     }
 
-    public int missingNumber(int[] nums) {
-        int answer = 0;
-
-        java.util.Arrays.sort(nums);
-
-        int n = nums.length;
-
-        int[] arr = new int[n + 1];
-
-        for (int i = 0; i < n + 1; i++) {
-            arr[i] = i;
-        }
-
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] != arr[i]) {
-                answer = arr[i];
-                break;
-            }
-        }
-
-        if (nums[n - 1] != n) return n;
-
-        return answer;
-    }
-
     public String firstPalindrome(String[] words) {
 
         for (int i = 0; i < words.length; i++) {
@@ -2476,4 +2451,69 @@ public class Arrays {
 
         return result;
     }
+
+    public int missingNumber(int[] nums) {
+
+        int currentSum = 0;
+        int expectedSum = nums.length * (nums.length + 1) / 2;
+
+        for(int n : nums){
+            currentSum += n;
+        }
+
+        return expectedSum - currentSum;
+    }
+
+    public int[] intersection(int[] nums1, int[] nums2) {
+
+        if (nums1.length == 0 || nums2.length == 0)
+            return new int[0];
+
+        Set<Integer> set1 = new HashSet<>();
+
+        Set<Integer> set2 = new HashSet<>();
+
+        for (int num : nums1) {
+            set1.add(num);
+        }
+
+        for (int num : nums2) {
+            if (set1.contains(num)) {
+                set2.add(num);
+            }
+        }
+
+        int[] ans = new int[set2.size()];
+        int i = 0;
+
+        for (int num : set2) {
+            ans[i++] = num;
+        }
+        return ans;
+    }
+
+    public int[] getSneakyNumbers(int[] nums) {
+
+        int answer[] = new int[2];
+
+        int aux, j = 0;
+
+        Set<Integer> set = new HashSet<>();
+
+        for (int num : nums) {
+            if (!set.contains(num)) {
+                set.add(num);
+            }else {
+                answer[j] = num;
+                j++;
+            }
+
+            if (j == 2)
+                break;
+
+        }
+
+        return answer;
+    }
+
 }
