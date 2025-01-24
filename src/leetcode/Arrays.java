@@ -6,20 +6,15 @@ public class Arrays {
 
 
     public int[] twoSum(int[] nums, int target) {
-        int[] index = new int[2];
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = 1; j < nums.length; j++) {
-                if (i == j) {
-                    j++;
-                }
-                if (nums[i] + nums[j] == target) {
-                    index[0] = i;
-                    index[1] = j;
-                    return index;
+        for (int i = 1; i < nums.length; i++) {
+            for (int j = i; j < nums.length; j++) {
+                int left = j - i;
+                if (nums[left] + nums[j] == target){
+                    return new int[]{left, j};
                 }
             }
         }
-        return index;
+        return new int[0];
     }
 
     public boolean isPalindrome(int x) {
@@ -74,17 +69,6 @@ public class Arrays {
         int[] newArr = new int[n + 1];
         newArr[0] = 1;
         return newArr;
-    }
-
-    public boolean containsDuplicate(int[] nums) {
-        boolean result = false;
-        java.util.Arrays.sort(nums);
-        for (int i = 0; i < nums.length - 1; i++) {
-            if (nums[i] == nums[i + 1]) {
-                result = true;
-            }
-        }
-        return result;
     }
 
     public int minimumSum(int[] nums) {
@@ -2516,4 +2500,86 @@ public class Arrays {
         return answer;
     }
 
+    public int countConsistentStrings(String allowed, String[] words) {
+
+        Set<Character> set = new HashSet<>();
+
+        int count = 0;
+
+        for (int i = 0; i < allowed.length(); i++) {
+            set.add(allowed.charAt(i));
+        }
+
+        for (String word : words) {
+            boolean contains = true;
+            for (char c : word.toCharArray()) {
+                if (!set.contains(c)) {
+                    contains = false;
+                    break;
+                }
+            }
+            if (contains) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public int countMaxOrSubsets(int[] nums) {
+
+
+
+        return 0;
+    }
+
+    public boolean containsDuplicate(int[] nums) {
+
+        Set<Integer> set = new HashSet<>();
+
+        for (int num : nums){
+            if (!set.add(num)) return true;
+        }
+
+        return false;
+    }
+
+    public List<List<String>> groupAnagrams(String[] strs) {
+        
+        if (strs == null || strs.length == 0) return new ArrayList<>();
+
+        Map<String, List<String>> map = new HashMap<>();
+
+        for (String word : strs) {
+            // Ordenar los caracteres de la palabra
+            char[] charArray = word.toCharArray();
+            java.util.Arrays.sort(charArray);
+            String sortedKey = new String(charArray);
+
+            // Añadir la palabra al grupo correspondiente
+            map.putIfAbsent(sortedKey, new ArrayList<>());
+            map.get(sortedKey).add(word);
+        }
+
+        // Devolver los grupos como lista
+        return new ArrayList<>(map.values());
+    }
+
+    public boolean isAnagram(String s, String t) {
+
+        if (s.length() != t.length()) return false;
+
+        int[] counts = new int[26];
+
+        for (int i = 0; i < s.length(); i++) {
+            counts[s.charAt(i) - 'a']++;
+            counts[t.charAt(i) - 'a']--;
+        }
+
+        for(int count : counts){
+            if (count != 0) return false;
+        }
+
+        return true;
+    }
 }
