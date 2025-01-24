@@ -2545,7 +2545,7 @@ public class Arrays {
     }
 
     public List<List<String>> groupAnagrams(String[] strs) {
-        
+
         if (strs == null || strs.length == 0) return new ArrayList<>();
 
         Map<String, List<String>> map = new HashMap<>();
@@ -2565,21 +2565,31 @@ public class Arrays {
         return new ArrayList<>(map.values());
     }
 
-    public boolean isAnagram(String s, String t) {
+    public int[] topKFrequent(int[] nums, int k) {
 
-        if (s.length() != t.length()) return false;
+        Map<Integer, Integer> freqMap = new HashMap<>();
 
-        int[] counts = new int[26];
-
-        for (int i = 0; i < s.length(); i++) {
-            counts[s.charAt(i) - 'a']++;
-            counts[t.charAt(i) - 'a']--;
+        for (int num : nums) {
+            freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
         }
 
-        for(int count : counts){
-            if (count != 0) return false;
+        // Paso 2: Usar una cola de prioridad (min-heap) para mantener los k elementos más frecuentes
+        PriorityQueue<Map.Entry<Integer, Integer>> minHeap =
+                new PriorityQueue<>(Comparator.comparingInt(Map.Entry::getValue));
+
+        for (Map.Entry<Integer, Integer> entry : freqMap.entrySet()) {
+            minHeap.offer(entry);
+            if (minHeap.size() > k) {
+                minHeap.poll(); // Eliminar el elemento menos frecuente
+            }
         }
 
-        return true;
+        // Paso 3: Extraer los elementos del heap y almacenarlos en el resultado
+        int[] answer = new int[k];
+        for (int i = k - 1; i >= 0; i--) {
+            answer[i] = minHeap.poll().getKey();
+        }
+
+        return answer;
     }
 }
