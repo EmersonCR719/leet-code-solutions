@@ -2360,19 +2360,29 @@ public class Arrays {
 
     public int longestConsecutive(int[] nums) {
 
-        if (nums.length == 0) return 0;
+        if (nums== null ||nums.length == 0) return 0;
 
-        int count = 1;
+        Set<Integer> numsSet = new HashSet<>();
 
-        java.util.Arrays.sort(nums);
+        for (int num : nums) {
+            numsSet.add(num);
+        }
 
-        for (int i = 0; i < nums.length - 1; i++) {
-            if (nums[i] + 1 == nums[i + 1]) {
-                count++;
+        int maxLength = 0;
+
+        for (int num : numsSet) {
+            //nums = [100, 4, 200, 1, 3, 2]
+            if (!numsSet.contains(num - 1)) {
+                int currentLength = 1;
+
+                while(numsSet.contains(num + currentLength)) {
+                    currentLength++;
+                }
+                maxLength = Math.max(maxLength, currentLength);
             }
         }
 
-        return count;
+        return maxLength;
     }
 
     public int maxProfit(int[] prices) {
