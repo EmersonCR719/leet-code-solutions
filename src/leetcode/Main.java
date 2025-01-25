@@ -6,11 +6,11 @@ public class Main {
 
         Arrays arr = new Arrays();
 
-        int[] nums1 = {1,2,3,4};
+        int[] nums1 = {1,8,6,2,5,4,8,3,7};
 
         int[] nums2 = {3,1,2};
 
-        System.out.println(java.util.Arrays.toString(arr.productExceptSelf(nums1)));
+        System.out.println(arr.maxArea(nums1));
 
     }
 }

@@ -2602,4 +2602,63 @@ public class Arrays {
 
         return answer;
     }
+
+    public boolean isValidSudoku(char[][] board) {
+
+        Set<String> seen = new HashSet<>();
+        for (int i=0; i<9; ++i) {
+            for (int j=0; j<9; ++j) {
+                char number = board[i][j];
+                if (number != '.')
+                    if (!seen.add(number + " in row " + i) ||
+                            !seen.add(number + " in column " + j) ||
+                            !seen.add(number + " in block " + i/3 + "-" + j/3))
+                        return false;
+            }
+        }
+        return true;
+    }
+
+    public int[] twoSumII(int[] numbers, int target) {
+
+        for(int i=1; i < numbers.length; i++){
+            for(int j=i; j < numbers.length; j++){
+                int left = j - i;
+                if(numbers[left] + numbers[j] == target)
+                    return new int[]{left + 1, j + 1};
+            }
+        }
+        return new int[0];
+    }
+
+    public List<List<Integer>> threeSum(int[] nums) {
+
+        List<Integer> threeplets = new ArrayList<>();
+
+        
+
+        return new ArrayList<>();
+    }
+
+    public int maxArea(int[] height) {
+
+        int i = 0, j = height.length - 1, maxArea = 0;
+
+        while (i < j) {
+            // Calcular el área entre las líneas en las posiciones i y j
+            int area = Math.min(height[i], height[j]) * (j - i);
+
+            // Actualizar el área máxima si es necesario
+            maxArea = Math.max(maxArea, area);
+
+            // Mover el puntero con la menor altura
+            if (height[i] < height[j]) {
+                i++;
+            } else {
+                j--;
+            }
+        }
+
+        return maxArea;
+    }
 }
