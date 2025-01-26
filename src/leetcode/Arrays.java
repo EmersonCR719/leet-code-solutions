@@ -2688,4 +2688,26 @@ public class Arrays {
         }
         return water;
     }
+
+    public boolean isValid(String s) {
+
+        Map<Character, Character> mappings = Map.of(')', '(', '}', '{', ']', '[');
+
+        Stack<Character> stack = new Stack<>();
+
+        for (char c : s.toCharArray()) {
+
+            if (mappings.containsKey(c)) {
+
+                char topElement = stack.isEmpty() ? '#' : stack.pop();
+
+                if (topElement != mappings.get(c)) {
+                    return false;
+                }
+            } else {
+                stack.push(c);
+            }
+        }
+        return stack.isEmpty();
+    }
 }
