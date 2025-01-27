@@ -9,7 +9,7 @@ public class Arrays {
         for (int i = 1; i < nums.length; i++) {
             for (int j = i; j < nums.length; j++) {
                 int left = j - i;
-                if (nums[left] + nums[j] == target){
+                if (nums[left] + nums[j] == target) {
                     return new int[]{left, j};
                 }
             }
@@ -2360,7 +2360,7 @@ public class Arrays {
 
     public int longestConsecutive(int[] nums) {
 
-        if (nums== null ||nums.length == 0) return 0;
+        if (nums == null || nums.length == 0) return 0;
 
         Set<Integer> numsSet = new HashSet<>();
 
@@ -2375,7 +2375,7 @@ public class Arrays {
             if (!numsSet.contains(num - 1)) {
                 int currentLength = 1;
 
-                while(numsSet.contains(num + currentLength)) {
+                while (numsSet.contains(num + currentLength)) {
                     currentLength++;
                 }
                 maxLength = Math.max(maxLength, currentLength);
@@ -2423,11 +2423,11 @@ public class Arrays {
 
         int xorNum1 = 0, xorNum2 = 0;
 
-        for(int num : nums1) {
+        for (int num : nums1) {
             xorNum1 ^= num;
         }
 
-        for(int num : nums2) {
+        for (int num : nums2) {
             xorNum2 ^= num;
         }
 
@@ -2451,7 +2451,7 @@ public class Arrays {
         int currentSum = 0;
         int expectedSum = nums.length * (nums.length + 1) / 2;
 
-        for(int n : nums){
+        for (int n : nums) {
             currentSum += n;
         }
 
@@ -2497,7 +2497,7 @@ public class Arrays {
         for (int num : nums) {
             if (!set.contains(num)) {
                 set.add(num);
-            }else {
+            } else {
                 answer[j] = num;
                 j++;
             }
@@ -2539,7 +2539,6 @@ public class Arrays {
     public int countMaxOrSubsets(int[] nums) {
 
 
-
         return 0;
     }
 
@@ -2547,7 +2546,7 @@ public class Arrays {
 
         Set<Integer> set = new HashSet<>();
 
-        for (int num : nums){
+        for (int num : nums) {
             if (!set.add(num)) return true;
         }
 
@@ -2606,13 +2605,13 @@ public class Arrays {
     public boolean isValidSudoku(char[][] board) {
 
         Set<String> seen = new HashSet<>();
-        for (int i=0; i<9; ++i) {
-            for (int j=0; j<9; ++j) {
+        for (int i = 0; i < 9; ++i) {
+            for (int j = 0; j < 9; ++j) {
                 char number = board[i][j];
                 if (number != '.')
                     if (!seen.add(number + " in row " + i) ||
                             !seen.add(number + " in column " + j) ||
-                            !seen.add(number + " in block " + i/3 + "-" + j/3))
+                            !seen.add(number + " in block " + i / 3 + "-" + j / 3))
                         return false;
             }
         }
@@ -2621,10 +2620,10 @@ public class Arrays {
 
     public int[] twoSumII(int[] numbers, int target) {
 
-        for(int i=1; i < numbers.length; i++){
-            for(int j=i; j < numbers.length; j++){
+        for (int i = 1; i < numbers.length; i++) {
+            for (int j = i; j < numbers.length; j++) {
                 int left = j - i;
-                if(numbers[left] + numbers[j] == target)
+                if (numbers[left] + numbers[j] == target)
                     return new int[]{left + 1, j + 1};
             }
         }
@@ -2635,7 +2634,6 @@ public class Arrays {
 
         List<Integer> threeplets = new ArrayList<>();
 
-        
 
         return new ArrayList<>();
     }
@@ -2709,5 +2707,33 @@ public class Arrays {
             }
         }
         return stack.isEmpty();
+    }
+
+    private int p1 = 0, p2 = 0;
+    private int getMin(int[] nums1, int[] nums2) {
+        if (p1 < nums1.length && p2 < nums2.length) {
+            return nums1[p1] < nums2[p2] ? nums1[p1++] : nums2[p2++];
+        } else if (p1 < nums1.length) {
+            return nums1[p1++];
+        } else if (p2 < nums2.length) {
+            return nums2[p2++];
+        }
+        return -1;
+    }
+
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+
+        int m = nums1.length, n = nums2.length;
+        if ((m + n) % 2 == 0) {
+            for (int i = 0; i < (m + n) / 2 - 1; ++i) {
+                int tmp = getMin(nums1, nums2);
+            }
+            return (double) (getMin(nums1, nums2) + getMin(nums1, nums2)) / 2;
+        } else {
+            for (int i = 0; i < (m + n) / 2; ++i) {
+                int tmp = getMin(nums1, nums2);
+            }
+            return getMin(nums1, nums2);
+        }
     }
 }

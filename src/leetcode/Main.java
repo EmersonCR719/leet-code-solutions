@@ -6,11 +6,11 @@ public class Main {
 
         Arrays arr = new Arrays();
 
-        int[] nums1 = {1,8,6,2,5,4,8,3,7};
+        int[] nums1 = {1,2};
 
-        int[] nums2 = {3,1,2};
+        int[] nums2 = {3,4};
 
-        System.out.println(arr.maxArea(nums1));
+        System.out.println(arr.findMedianSortedArrays(nums1, nums2));
 
     }
 }
