@@ -2742,4 +2742,24 @@ public class Arrays {
 
         return mountains;
     }
+
+    public int maxWidthOfVerticalArea(int[][] points) {
+
+        int maxWidth = 0;
+        int[] pointsOfX = new int[points.length];
+
+        for (int i = 0; i < points.length; i++) {
+            pointsOfX[i] = points[i][0];
+        }
+
+        java.util.Arrays.sort(pointsOfX);
+
+        for (int i = 0; i < pointsOfX.length - 1; i++) {
+            int subtration = pointsOfX[i + 1] - pointsOfX[i];
+            if (subtration > maxWidth) {
+                maxWidth = subtration;
+            }
+        }
+        return maxWidth;
+    }
 }
