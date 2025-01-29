@@ -2790,4 +2790,23 @@ public class Arrays {
 
         return result;
     }
+
+    public int pairsOfDiferenceK(int k, int nums[]){
+
+        int count = 0;
+
+        Map<Integer,Integer> map = new Hashtable<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            map.put(i, nums[i]);
+        }
+
+        for (int num : map.values()) {
+            if (map.containsValue(num - k)) {
+                count++;
+            }
+        }
+
+        return count;
+    }
 }
