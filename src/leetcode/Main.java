@@ -10,7 +10,7 @@ public class Main {
 
         int[] nums2 = {3,4};
 
-        System.out.println(arr.pairsOfDiferenceK(2,nums1));
+        System.out.println(arr.pairsOfDifferenceK(2,nums1));
 
     }
 }

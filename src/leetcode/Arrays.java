@@ -2791,7 +2791,7 @@ public class Arrays {
         return result;
     }
 
-    public int pairsOfDiferenceK(int k, int nums[]){
+    public int pairsOfDifferenceK(int k, int nums[]){
 
         int count = 0;
 
@@ -2809,4 +2809,6 @@ public class Arrays {
 
         return count;
     }
+
+
 }
