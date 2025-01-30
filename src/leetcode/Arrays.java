@@ -2271,36 +2271,6 @@ public class Arrays {
         return new ArrayList<>();
     }
 
-    public List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
-
-        List<List<Integer>> answer = new ArrayList<>();
-
-        List<Integer> arr1 = new ArrayList<>();
-        List<Integer> arr2 = new ArrayList<>();
-
-        Map<Integer, Integer> map1 = new HashMap<>();
-        Map<Integer, Integer> map2 = new HashMap<>();
-
-        for (int i = 0; i < nums1.length; i++) {
-            map1.put(nums1[i], i);
-            map2.put(nums2[i], i);
-        }
-
-        for (int i = 0; i < nums1.length; i++) {
-            if (!map1.containsKey(nums2[i])) {
-                arr1.add(nums2[i]);
-            }
-            if (!map2.containsKey(nums1[i])) {
-                arr2.add(nums1[i]);
-            }
-        }
-
-        answer.add(arr2);
-        answer.add(arr1);
-
-        return answer;
-    }
-
     public int[] sortByBits(int[] arr) {
         int[] answer;
         // Convertimos el arreglo de enteros a un arreglo de Integer para usar Arrays.sort con un Comparator
@@ -2810,5 +2780,36 @@ public class Arrays {
         return count;
     }
 
+    public List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
 
+        List<List<Integer>> answer = new ArrayList<>();
+        Set<Integer> set1 = new HashSet<>();
+        Set<Integer> set2 = new HashSet<>();
+
+        for (int num : nums1) {
+            set1.add(num);
+        }
+        for (int num : nums2) {
+            set2.add(num);
+        }
+
+        List<Integer> diff1 = new ArrayList<>();
+        for (int num : set1) {
+            if (!set2.contains(num)) {
+                diff1.add(num);
+            }
+        }
+
+        List<Integer> diff2 = new ArrayList<>();
+        for (int num : set2) {
+            if (!set1.contains(num)) {
+                diff2.add(num);
+            }
+        }
+
+        answer.add(diff1);
+        answer.add(diff2);
+
+        return answer;
+    }
 }
