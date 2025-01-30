@@ -1817,28 +1817,6 @@ public class Arrays {
         return sum;
     }
 
-    public boolean uniqueOccurrences(int[] arr) {
-
-        var hashMap = new HashMap<Integer, Integer>();
-
-        if (arr.length == 2 && arr[0] != arr[1]) {
-            return false;
-        }
-
-        for (int i = 0; i < arr.length; i++) {
-            hashMap.put(i, arr[i]);
-        }
-
-        var entrySet = hashMap.entrySet();
-
-        for (var entry : entrySet) {
-
-            if (hashMap.containsKey(entry.getValue())) return true;
-        }
-
-        return false;
-    }
-
     public int firstMissingPositive(int[] nums) {
 
         var num = 1;
@@ -2811,5 +2789,12 @@ public class Arrays {
         answer.add(diff2);
 
         return answer;
+    }
+
+    public boolean uniqueOccurrences(int[] arr) {
+
+        
+
+        return false;
     }
 }
