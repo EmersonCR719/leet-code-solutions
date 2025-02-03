@@ -2679,7 +2679,7 @@ public class Arrays {
         List<Integer> mountains = new ArrayList<>();
 
         for (int i = 1; i < height.length; i++) {
-            if (height[i-1] >= threshold) {
+            if (height[i - 1] >= threshold) {
                 mountains.add(i);
             }
         }
@@ -2735,11 +2735,11 @@ public class Arrays {
         return result;
     }
 
-    public int pairsOfDifferenceK(int k, int nums[]){
+    public int pairsOfDifferenceK(int k, int nums[]) {
 
         int count = 0;
 
-        Map<Integer,Integer> map = new Hashtable<>();
+        Map<Integer, Integer> map = new Hashtable<>();
 
         for (int i = 0; i < nums.length; i++) {
             map.put(i, nums[i]);
@@ -2790,7 +2790,6 @@ public class Arrays {
     public boolean uniqueOccurrences(int[] arr) {
 
 
-
         return false;
     }
 
@@ -2801,7 +2800,7 @@ public class Arrays {
 
         for (int i = 0; i < n; i++) {
 
-            if (nums[i] > nums[(i+1) % n]){
+            if (nums[i] > nums[(i + 1) % n]) {
                 count++;
             }
 
@@ -2819,7 +2818,7 @@ public class Arrays {
         if (n == 1) return true;
 
         for (int i = 0; i < n - 1; i++) {
-            if (nums[i] % 2 != 0 && nums[i+1] % 2 != 0 || nums[i] % 2 == 0 && nums[i+1] % 2 == 0) return false;
+            if (nums[i] % 2 != 0 && nums[i + 1] % 2 != 0 || nums[i] % 2 == 0 && nums[i + 1] % 2 == 0) return false;
         }
 
         return true;
@@ -2831,11 +2830,11 @@ public class Arrays {
         int decLength = 1;
         int maxLength = 1;
 
-        for(int pos = 0; pos < nums.length - 1; pos++) {
-            if(nums[pos + 1] > nums[pos]) {
+        for (int pos = 0; pos < nums.length - 1; pos++) {
+            if (nums[pos + 1] > nums[pos]) {
                 incLength++;
                 decLength = 1;
-            } else if(nums[pos + 1] < nums[pos]) {
+            } else if (nums[pos + 1] < nums[pos]) {
                 decLength++;
                 incLength = 1;
             } else {
@@ -2846,4 +2845,22 @@ public class Arrays {
         }
         return maxLength;
     }
+
+    public int countNumbersWithUniqueDigits(int n) {
+
+        if (n == 0) return 1;
+
+        int count = 10;
+        int uniqueDigits = 9;
+        int availableNumbers = 9;
+
+        for (int i = 2; i <= n; i++) {
+            uniqueDigits *= availableNumbers;
+            count += uniqueDigits;
+            availableNumbers--;
+        }
+
+        return count;
+    }
+
 }
