@@ -2863,4 +2863,22 @@ public class Arrays {
         return count;
     }
 
+
+    public int maxAscendingSum(int[] nums) {
+
+        if (nums.length == 1) return nums[0];
+
+        int maxSum = 0;
+        int sum = nums[0];
+        //nums = [10,20,30,5,10,50]
+        for (int i = 1; i < nums.length; i++) {
+            if(nums[i] <= nums[i - 1]){
+                maxSum = Math.max(maxSum, sum);
+                sum = 0;
+            }
+            sum += nums[i];
+        }
+
+        return Math.max(maxSum, sum);
+    }
 }
