@@ -10,7 +10,9 @@ public class Main {
 
         int[] nums2 = {3,4};
 
-        System.out.println();
+        String s1 = "abcd", s2 = "dcba";
+
+        System.out.println(arr.areAlmostEqual(s1, s2));
 
     }
 }
