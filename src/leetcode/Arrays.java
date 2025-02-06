@@ -2872,7 +2872,7 @@ public class Arrays {
         int sum = nums[0];
         //nums = [10,20,30,5,10,50]
         for (int i = 1; i < nums.length; i++) {
-            if(nums[i] <= nums[i - 1]){
+            if (nums[i] <= nums[i - 1]) {
                 maxSum = Math.max(maxSum, sum);
                 sum = 0;
             }
@@ -2904,5 +2904,30 @@ public class Arrays {
         }
 
         return java.util.Arrays.equals(s1FrecuencyMap, s2FrecuencyMap);
+    }
+
+    public int tupleSameProduct(int[] nums) {
+
+        HashMap<Integer, List<int[]>> productMap = new HashMap<>();
+        int count = 0;
+
+        int n = nums.length;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+
+                int product = nums[i] * nums[j];
+
+                if (productMap.containsKey(product)) {
+                    int existingPairs = productMap.get(product).size();
+                    count += existingPairs * 8;
+                }
+
+                productMap.putIfAbsent(product, new ArrayList<>());
+                productMap.get(product).add(new int[]{nums[i], nums[j]});
+            }
+        }
+
+        return count;
     }
 }
