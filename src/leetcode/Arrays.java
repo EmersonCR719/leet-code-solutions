@@ -2930,4 +2930,33 @@ public class Arrays {
 
         return count;
     }
+
+    public int[] queryResults(int limit, int[][] queries) {
+
+        Map<Integer, Integer> ballColors = new HashMap<>();
+        Set<Integer> distinctColors = new HashSet<>();
+        int[] result = new int[queries.length];
+
+        for (int i = 0; i < queries.length; i++) {
+            int x = queries[i][0], y = queries[i][1];
+
+            // Si la bola ya tenía un color, verificar si es necesario eliminarlo
+            if (ballColors.containsKey(x)) {
+                int oldColor = ballColors.get(x);
+                ballColors.remove(x); // Removemos temporalmente para hacer el conteo
+                if (!ballColors.containsValue(oldColor)) {
+                    distinctColors.remove(oldColor); // Eliminar si era el único con ese color
+                }
+            }
+
+            // Asignar el nuevo color
+            ballColors.put(x, y);
+            distinctColors.add(y);
+
+            // Guardamos el número de colores distintos actuales
+            result[i] = distinctColors.size();
+        }
+
+        return result;
+    }
 }
