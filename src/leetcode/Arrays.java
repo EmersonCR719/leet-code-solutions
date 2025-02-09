@@ -2958,8 +2958,12 @@ public class Arrays {
 
     public long countBadPairs(int[] nums) {
 
-        int count = 0;
+        long count = 0L;
+        int n = nums.length;
 
+        for (int i = 0; i < n; i++) {
+
+        }
 
         return count;
     }
@@ -2984,6 +2988,11 @@ public class Arrays {
         }
 
         return count;
+    }
+
+    public void deleteNode(ListNode node) {
+        node.val = node.next.val;
+        node.next = node.next.next;
     }
 
 }
