@@ -2960,4 +2960,34 @@ public class Arrays {
         return result;
     }
 
+    public long countBadPairs(int[] nums) {
+
+        int count = 0;
+
+
+        return count;
+    }
+
+    public int findPairs(int[] nums, int k) {
+        int count = 0;
+
+        if (k < 0) return count; //Se retorna 0 porque no hay diferencias negativas en valor absoluto
+
+        Map<Integer, Integer> map = new Hashtable<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
+        }
+
+        for (int num : map.keySet()) {
+            if (k == 0){
+                if (map.get(num) > 1) count++;
+            }else {
+                if (map.containsKey(num + k)) count++;
+            }
+        }
+
+        return count;
+    }
+
 }
