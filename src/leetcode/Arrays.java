@@ -3001,13 +3001,26 @@ public class Arrays {
         node.next = node.next.next;
     }
 
+    public String clearDigits(String s) {
 
-    public ListNode removeElements(ListNode head, int val) {
+        Stack<Character> stack = new Stack<>();
+        
+        for (char c : s.toCharArray()) {
+            if (Character.isDigit(c)){
+                if (!stack.isEmpty()){
+                    stack.pop();
+                }
+            }else {
+                stack.push(c);
+            }
+        }
 
-        ListNode previus = head;
-        ListNode current = head;
+        StringBuilder sb = new StringBuilder();
 
+        for (char c : stack) {
+            sb.append(c);
+        }
 
-        return previus;
+        return sb.toString();
     }
 }
