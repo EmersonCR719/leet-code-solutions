@@ -2958,14 +2958,20 @@ public class Arrays {
 
     public long countBadPairs(int[] nums) {
 
-        long count = 0L;
-        int n = nums.length;
+        long badPairs = 0;
+        Map<Integer, Integer> diffCount = new HashMap<>();
 
-        for (int i = 0; i < n; i++) {
+        for (int idx = 0; idx < nums.length; idx++) {
+            int diff = idx - nums[idx];
 
+            int goodPairsCount = diffCount.getOrDefault(diff, 0);
+
+            badPairs += idx - goodPairsCount;
+
+            diffCount.put(diff, goodPairsCount + 1);
         }
 
-        return count;
+        return badPairs;
     }
 
     public int findPairs(int[] nums, int k) {
@@ -2995,4 +3001,13 @@ public class Arrays {
         node.next = node.next.next;
     }
 
+
+    public ListNode removeElements(ListNode head, int val) {
+
+        ListNode previus = head;
+        ListNode current = head;
+
+
+        return previus;
+    }
 }
