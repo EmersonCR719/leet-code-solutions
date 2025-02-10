@@ -639,12 +639,6 @@ public class Arrays {
         System.out.println(java.util.Arrays.toString(nums));
     }
 
-    public boolean validMountainArray(int[] arr) {
-        boolean answer = false;
-
-        return answer;
-    }
-
     public int findSpecialInteger(int[] arr) {
         int count = 0;
         for (int i = 0; i < arr.length; i++) {
@@ -833,25 +827,6 @@ public class Arrays {
             }
         }
         return index;
-    }
-
-    public int[] findDiagonalOrder(int[][] mat) {
-        int[] answer = new int[mat.length];
-
-        return answer;
-    }
-
-    public String addBinary(String a, String b) {
-        String ans = "";
-        return ans;
-    }
-
-    public int binaryToDecimal(String binary) {
-        int decimal = 0;
-        for (int i = 0; i < binary.length(); i++) {
-
-        }
-        return decimal;
     }
 
     public int strStr(String haystack, String needle) {
@@ -1186,17 +1161,6 @@ public class Arrays {
         return answer;
     }
 
-    public String firstPalindrome(String[] words) {
-
-        for (int i = 0; i < words.length; i++) {
-            if (isPalindrome(words[i])) {
-                return words[i];
-            }
-        }
-
-        return "";
-    }
-
     public boolean isPalindrome(String word) {
 
         if (word == null || word.isEmpty()) {
@@ -1295,12 +1259,6 @@ public class Arrays {
         }
 
         return answer;
-    }
-
-    public int maxSum(int[] nums) {
-
-
-        return 0;
     }
 
     public int vowelStrings(String[] words, int left, int right) {
@@ -1427,13 +1385,13 @@ public class Arrays {
 
     public int countKDifference(int[] nums, int k) {
 
-        Map<Integer,Integer> map = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
 
         int count = 0;
 
-        for(int n: nums){
-            count += map.getOrDefault(n - k,0) + map.getOrDefault(n + k,0);
-            map.put(n,map.getOrDefault(n,0) + 1);
+        for (int n : nums) {
+            count += map.getOrDefault(n - k, 0) + map.getOrDefault(n + k, 0);
+            map.put(n, map.getOrDefault(n, 0) + 1);
         }
         return count;
     }
@@ -1599,10 +1557,6 @@ public class Arrays {
         return answer;
     }
 
-    public int arrayPairSum(int[] nums) {
-        return 0;
-    }
-
     public String truncateSentence(String s, int k) {
 
         String[] words = s.split(" ");
@@ -1728,20 +1682,6 @@ public class Arrays {
         return totalFrequencies;
     }
 
-    public int findDuplicate(int[] nums) {
-
-        java.util.Arrays.sort(nums);
-
-        for (int i = 0; i < nums.length - 1; i++) {
-
-            if (nums[i] == nums[i + 1]) {
-                return nums[i];
-            }
-        }
-
-        return 0;
-    }
-
     public String[] sortPeople(String[] names, int[] heights) {
 
         String[] answer = new String[names.length];
@@ -1858,37 +1798,6 @@ public class Arrays {
         return count;
     }
 
-    public int maxSubarrayLength(int[] nums, int k) {
-        return 0;
-    }
-
-    public long countSubarrays(int[] nums, int minK, int maxK) {
-
-        long answer = 0;
-
-        int left = 0;
-
-        int right = 0;
-
-        int index = 0;
-
-        while (right < nums.length) {
-
-            while (index < right - 1) {
-                if (nums[index] == minK && nums[index + 1] == maxK) {
-
-                }
-
-                index++;
-            }
-
-
-            right++;
-        }
-
-        return 0L;
-    }
-
     public int search(int[] nums, int target) {
         if (java.util.Arrays.binarySearch(nums, target) >= 0)
             return java.util.Arrays.binarySearch(nums, target);
@@ -1972,9 +1881,6 @@ public class Arrays {
 
     }
 
-    public void subsets(int[] arr) {
-    }
-
     public int[] singleNumber(int[] nums) {
         int[] answer = new int[2];
 
@@ -2009,15 +1915,6 @@ public class Arrays {
         }
 
         return answer;
-    }
-
-    public int maximumStrongPairXor(int[] nums) {
-
-        for (int i = 0; i < nums.length; i++) {
-
-        }
-
-        return 0;
     }
 
     public int subarraysDivByK(int[] nums, int k) {
@@ -2056,11 +1953,6 @@ public class Arrays {
         }
 
         return mSum;
-    }
-
-    public int subarraySum(int[] nums, int k) {
-
-        return 0;
     }
 
     public int minMovesToSeat(int[] seats, int[] students) {
@@ -2176,10 +2068,6 @@ public class Arrays {
     public int[] findIntersectionValues(int[] nums1, int[] nums2) {
 
         int[] answer = new int[2];
-
-        int left = 0;
-
-        int right = 0;
 
         Map<Integer, Integer> map = new HashMap<>();
 
@@ -2430,7 +2318,7 @@ public class Arrays {
 
         int answer[] = new int[2];
 
-        int aux, j = 0;
+        int j = 0;
 
         Set<Integer> set = new HashSet<>();
 
@@ -2474,12 +2362,6 @@ public class Arrays {
         }
 
         return count;
-    }
-
-    public int countMaxOrSubsets(int[] nums) {
-
-
-        return 0;
     }
 
     public boolean containsDuplicate(int[] nums) {
@@ -2783,12 +2665,6 @@ public class Arrays {
         return answer;
     }
 
-    public boolean uniqueOccurrences(int[] arr) {
-
-
-        return false;
-    }
-
     public boolean check(int[] nums) {
 
         int count = 0;
@@ -3004,13 +2880,13 @@ public class Arrays {
     public String clearDigits(String s) {
 
         Stack<Character> stack = new Stack<>();
-        
+
         for (char c : s.toCharArray()) {
-            if (Character.isDigit(c)){
-                if (!stack.isEmpty()){
+            if (Character.isDigit(c)) {
+                if (!stack.isEmpty()) {
                     stack.pop();
                 }
-            }else {
+            } else {
                 stack.push(c);
             }
         }
@@ -3022,5 +2898,24 @@ public class Arrays {
         }
 
         return sb.toString();
+    }
+
+    public int[] finalPrices(int[] prices) {
+
+        int n = prices.length;
+        int[] answer = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            int discount = 0;
+            for (int j = i + 1; j < n; j++) {
+                if (prices[j] <= prices[i]) {
+                    discount = prices[j];
+                    break;
+                }
+            }
+            answer[i] = discount - prices[i];
+        }
+
+        return answer;
     }
 }
