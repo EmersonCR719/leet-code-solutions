@@ -2918,7 +2918,7 @@ public class Arrays {
 
         return answer;
     }
-<<<<<<< HEAD
+
 
     public String removeOccurrences(String s, String part) {
 
@@ -2934,6 +2934,7 @@ public class Arrays {
 
         return stack.toString();
     }
-=======
->>>>>>> 532a8d59c7d25c11ca98411f955fcd67a73d2bf8
+
+
+
 }
