@@ -574,6 +574,9 @@ public class Arrays {
     }
 
     public int digitsSum(int num) {
+
+        if (num >= 0 && num <= 9) return num;
+
         int sum = 0;
         while (num != 0) {
             sum += num % 10;   //MÉTODO DE AYUDA
@@ -2936,5 +2939,21 @@ public class Arrays {
     }
 
 
+    public int maximumSum(int[] nums) {
+
+        int maxSum = -1;
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int num : nums) {
+            int digitSum = digitsSum(num);
+
+            if (map.containsKey(digitSum)) {
+                maxSum = Math.max(maxSum, map.get(digitSum) + num);
+            }
+            map.put(digitSum, Math.max(map.getOrDefault(digitSum, 0), num));
+        }
+
+        return maxSum;
+    }
 
 }
