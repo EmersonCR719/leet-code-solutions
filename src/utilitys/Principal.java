@@ -1,6 +1,6 @@
 package utilitys;
 
-import leetcode.Strings;
+import leetcode.string.Strings;
 
 import java.util.Arrays;
 import java.util.Comparator;

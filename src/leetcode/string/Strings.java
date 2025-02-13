@@ -1,8 +1,6 @@
-package leetcode;
+package leetcode.string;
 
-import java.sql.SQLOutput;
 import java.util.*;
-import java.util.Arrays;
 
 public class Strings {
 

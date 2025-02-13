@@ -1,4 +1,6 @@
-package leetcode;
+package leetcode.array;
+
+import leetcode.linkedlist.ListNode;
 
 import java.util.*;
 
@@ -2407,7 +2409,7 @@ public class Arrays {
             freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
         }
 
-        // Paso 2: Usar una cola de prioridad (min-heap) para mantener los k elementos más frecuentes
+        // Paso 2: Usar una cola de prioridad (min-heap) para mantener los "k" elementos más frecuentes
         PriorityQueue<Map.Entry<Integer, Integer>> minHeap =
                 new PriorityQueue<>(Comparator.comparingInt(Map.Entry::getValue));
 
