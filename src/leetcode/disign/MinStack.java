@@ -44,5 +44,5 @@ public class MinStack {
     public int getMin() {
         return (top != null) ? top.min : -1;
     }
-    
+
 }

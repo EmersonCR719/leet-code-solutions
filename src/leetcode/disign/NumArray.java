@@ -2,12 +2,18 @@ package leetcode.disign;
 
 public class NumArray {
 
-    public NumArray(int[] nums) {
+    private int[] prefixSum;
 
+    public NumArray(int[] nums) {
+        int n = nums.length;
+        prefixSum = new int[n + 1];
+        for (int i = 0; i < n; i++) {
+            prefixSum[i + 1] = prefixSum[i] + nums[i];
+        }
     }
 
     public int sumRange(int left, int right) {
-        return 0;
+        return prefixSum[right + 1] - prefixSum[left];
     }
 
     /**
