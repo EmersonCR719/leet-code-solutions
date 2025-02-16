@@ -680,4 +680,9 @@ public class MathAlgoritms {
         return sum;
     }
 
+    public int punishmentNumber(int n) {
+
+        return 0;
+    }
+
 }
