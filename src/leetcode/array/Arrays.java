@@ -2979,6 +2979,54 @@ public class Arrays {
         return numOfOperations;
     }
 
+    public int[] constructDistancedSequence(int n) {
 
+        int size = 2 * n - 1;
+        int[] result = new int[size];
+        boolean[] used = new boolean[n + 1]; // Para saber qué números hemos colocado
+
+        backtrack(result, used, 0, n);
+        return result;
+    }
+
+    private boolean backtrack(int[] result, boolean[] used, int index, int n) {
+        // Si llenamos todo el arreglo, terminamos
+        if (index == result.length) {
+            return true;
+        }
+        // Si la posición ya está ocupada, pasamos a la siguiente
+        if (result[index] != 0) {
+            return backtrack(result, used, index + 1, n);
+        }
+
+        // Intentamos colocar los números desde n hasta 1 (para priorizar el más grande)
+        for (int num = n; num >= 1; num--) {
+            // Si ya lo usamos, lo saltamos
+            if (used[num]) continue;
+
+            // Si num == 1, solo lo colocamos en la posición actual
+            if (num == 1) {
+                result[index] = 1;
+                used[1] = true;
+                if (backtrack(result, used, index + 1, n)) return true;
+                result[index] = 0;
+                used[1] = false;
+            }
+            // Para números mayores, verificamos si hay espacio para colocarlo
+            else if (index + num < result.length && result[index + num] == 0) {
+                result[index] = num;
+                result[index + num] = num;
+                used[num] = true;
+
+                if (backtrack(result, used, index + 1, n)) return true;
+
+                // Backtracking: Deshacer cambios
+                result[index] = 0;
+                result[index + num] = 0;
+                used[num] = false;
+            }
+        }
+        return false;
+    }
 
 }
