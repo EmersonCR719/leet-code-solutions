@@ -3029,4 +3029,29 @@ public class Arrays {
         return false;
     }
 
+    public int numTilePossibilities(String tiles) {
+
+        // Contar la frecuencia de cada letra
+        Map<Character, Integer> counter = new HashMap<>();
+        for (char c : tiles.toCharArray()) {
+            counter.put(c, counter.getOrDefault(c, 0) + 1);
+        }
+        // Llamar a la función de backtracking
+        return backtrack(counter);
+    }
+
+    private int backtrack(Map<Character, Integer> counter) {
+        int total = 0;
+        for (char c : counter.keySet()) {
+            if (counter.get(c) > 0) {
+                // Usar una letra
+                counter.put(c, counter.get(c) - 1);
+                total += 1 + backtrack(counter); // Contar esta secuencia y continuar
+                // Restaurar la letra para la siguiente iteración
+                counter.put(c, counter.get(c) + 1);
+            }
+        }
+        return total;
+    }
+
 }
