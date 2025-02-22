@@ -1,5 +1,9 @@
 package leetcode.trees;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
 public class BinarySearchTree {
 
     public int maxDepth(TreeNode root) {
@@ -17,5 +21,28 @@ public class BinarySearchTree {
     public boolean isBalanced(TreeNode root) {
 
         return false;
+    }
+
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> inorder = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode curr = root;
+
+        while (curr != null || !stack.isEmpty()) {
+            while (curr != null) {
+                stack.push(curr);
+                curr = curr.left;
+            }
+            curr = stack.pop();
+            inorder.add(curr.val);
+
+            curr = curr.right;
+        }
+
+        return inorder;
+    }
+
+    public TreeNode recoverFromPreorder(String traversal) {
+        return null;
     }
 }

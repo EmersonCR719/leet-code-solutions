@@ -1,8 +1,6 @@
 package leetcode.disign;
 
 import leetcode.trees.TreeNode;
-
-import java.util.BitSet;
 import java.util.HashSet;
 import java.util.Set;
 
