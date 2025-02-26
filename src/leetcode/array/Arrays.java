@@ -3071,4 +3071,21 @@ public class Arrays {
         return sb.toString();
     }
 
+    public int maxAbsoluteSum(int[] nums) {
+
+        int maxEndingHere = 0, minEndingHere = 0;
+        int maxSoFar = 0, minSoFar = 0;
+
+        for (int num : nums) {
+            // Kadane para la suma máxima
+            maxEndingHere = Math.max(num, maxEndingHere + num);
+            maxSoFar = Math.max(maxSoFar, maxEndingHere);
+
+            // Kadane para la suma mínima
+            minEndingHere = Math.min(num, minEndingHere + num);
+            minSoFar = Math.min(minSoFar, minEndingHere);
+        }
+
+        return Math.max(maxSoFar, Math.abs(minSoFar));
+    }
 }
