@@ -8,11 +8,11 @@ public class Main {
 
         int[] nums1 = {1000000000,999999999,1000000000,999999999,1000000000,999999999};
 
-        int[] nums2 = {3, 4};
+        int[] nums2 = {1,2,2,1,1,0};
 
         String s1 = "abcd", s2 = "dcba";
 
-        System.out.println(arr.minOperations(nums1, 20));
+        System.out.println(java.util.Arrays.toString(arr.applyOperations(nums2)));
 
     }
 }
