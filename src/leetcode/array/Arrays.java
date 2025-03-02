@@ -3061,9 +3061,9 @@ public class Arrays {
         int n = nums.length;
 
         for (int i = 0; i < n; i++) {
-            if(nums[i].charAt(i)=='0'){
+            if (nums[i].charAt(i) == '0') {
                 sb.append('1');
-            }else{
+            } else {
                 sb.append('0');
             }
         }
@@ -3094,7 +3094,7 @@ public class Arrays {
         int n = nums.length;
 
         for (int i = 0; i < n - 1; i++) {
-            if (nums[i] == nums[i + 1]){
+            if (nums[i] == nums[i + 1]) {
                 nums[i] *= 2;
                 nums[i + 1] = 0;
             }
@@ -3103,22 +3103,47 @@ public class Arrays {
         int index = 0, count = 0;
 
         for (int i = 0; i < n; i++) {
-            if (nums[i] != 0){
+            if (nums[i] != 0) {
                 nums[index] = nums[i];
                 index++;
-            }else {
+            } else {
                 count++;
             }
         }
 
         index = 0;
-        while (count > 0){
-            nums[n - 1 -index] = 0;
+        while (count > 0) {
+            nums[n - 1 - index] = 0;
             index++;
             count--;
         }
 
         return nums;
+    }
+
+    public int[][] mergeArrays(int[][] nums1, int[][] nums2) {
+
+        Map<Integer, Integer> keyToSum = new TreeMap<>();
+
+        for (int[] num : nums1) {
+            keyToSum.put(num[0], num[1]);
+        }
+
+        for (int[] num : nums2) {
+            keyToSum.put(num[0], keyToSum.getOrDefault(num[0], 0) + num[1]);
+        }
+
+        List<int[]> mergedList = new ArrayList<>();
+        for (Map.Entry<Integer, Integer> entry : keyToSum.entrySet()) {
+            mergedList.add(new int[]{entry.getKey(), entry.getValue()});
+        }
+
+        int[][] mergedArray = new int[mergedList.size()][2];
+        for (int i = 0; i < mergedList.size(); i++) {
+            mergedArray[i] = mergedList.get(i);
+        }
+
+        return mergedArray;
     }
 
 }
