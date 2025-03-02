@@ -3100,6 +3100,24 @@ public class Arrays {
             }
         }
 
+        int index = 0, count = 0;
+
+        for (int i = 0; i < n; i++) {
+            if (nums[i] != 0){
+                nums[index] = nums[i];
+                index++;
+            }else {
+                count++;
+            }
+        }
+
+        index = 0;
+        while (count > 0){
+            nums[n - 1 -index] = 0;
+            index++;
+            count--;
+        }
+
         return nums;
     }
 
