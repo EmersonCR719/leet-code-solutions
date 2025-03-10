@@ -573,4 +573,45 @@ public class Strings {
         return "";
     }
 
+    public long countOfSubstrings(String word, int k) {
+        int n = word.length();
+        int left = 0, count = 0;
+        Map<Character, Integer> vowelCount = new HashMap<>();
+        int consonants = 0;
+
+        Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u'));
+
+        for (int right = 0; right < n; right++) {
+            char c = word.charAt(right);
+
+            // Contar vocales únicas en la ventana
+            if (vowels.contains(c)) {
+                vowelCount.put(c, vowelCount.getOrDefault(c, 0) + 1);
+            } else {
+                consonants++;
+            }
+
+            // Reducir la ventana si excede k consonantes
+            while (consonants > k) {
+                char leftChar = word.charAt(left);
+                if (vowels.contains(leftChar)) {
+                    vowelCount.put(leftChar, vowelCount.get(leftChar) - 1);
+                    if (vowelCount.get(leftChar) == 0) {
+                        vowelCount.remove(leftChar);
+                    }
+                } else {
+                    consonants--;
+                }
+                left++;
+            }
+
+            // Si la ventana es válida (tiene todas las vocales y k consonantes)
+            if (vowelCount.size() == 5 && consonants == k) {
+                count += left + 1;
+            }
+        }
+
+        return count;
+    }
+
 }
