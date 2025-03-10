@@ -614,4 +614,31 @@ public class Strings {
         return count;
     }
 
+    public int maxVowels(String s, int k) {
+
+        int currentVowels = 0, n = s.length(), maxVowels;
+
+        Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u'));
+
+        for (int i = 0; i < k; i++) {
+            if (vowels.contains(s.charAt(i))) {
+                currentVowels++;
+            }
+        }
+
+        maxVowels = currentVowels;
+
+        for (int i = k; i < n; i++) {
+            if (vowels.contains(s.charAt(i))) {
+                currentVowels++;
+            }
+            if (vowels.contains(s.charAt(i - k))) {
+                currentVowels--;
+            }
+            maxVowels = Math.max(maxVowels, currentVowels);
+        }
+
+        return maxVowels;
+    }
+
 }
