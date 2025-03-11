@@ -167,41 +167,29 @@ public class Strings {
 
     public String reverseVowels(String s) {
 
-        StringBuilder stringBuilder = new StringBuilder();
+        char[] chars = s.toCharArray();
+        int left = 0, right = s.length() - 1;
 
-        String str = s.toLowerCase();
+        boolean[] isVowel = new boolean[256];
+        for (char c : "AEIOUaeiou".toCharArray()) {
+            isVowel[c] = true;
+        }
 
-        char[] word = s.toCharArray();
-
-        for (int i = 0; i < str.length(); i++) {
-
-            if (s.charAt(i) == 'a' || s.charAt(i) == 'e' || s.charAt(i) == 'i' || s.charAt(i) == 'o'
-                    || s.charAt(i) == 'u') {
-                stringBuilder.append(s.charAt(i));
+        while (left < right){
+            if (!isVowel[chars[left]]){
+                left++;
+            }else if (!isVowel[chars[right]]){
+                right--;
+            }else {
+                char temp = chars[left];
+                chars[left] = chars[right];
+                chars[right] = temp;
+                left++;
+                right--;
             }
         }
 
-        stringBuilder.reverse();
-
-        StringBuilder answer = new StringBuilder();
-
-        int index = 0;
-
-        for (int i = 0; i < word.length; i++) {
-
-            if (word[i] == 'a' || word[i] == 'e' || word[i] == 'i' || word[i] == 'o' || word[i] == 'u') {
-                word[i] = stringBuilder.charAt(index);
-                index++;
-            }                               // FALTA TERMINAR
-        }
-
-        for (int i = 0; i < word.length; i++) {
-
-            answer.append(word[i]);
-        }
-
-
-        return answer.toString();
+        return new String(chars);
     }
 
     public int lengthOfLastWord(String s) {
@@ -513,7 +501,7 @@ public class Strings {
     public boolean wordPattern(String pattern, String s) {
 
         Map<Character, String> map = new HashMap<>();
-        
+
         String[] words = s.split("\\s+");
 
         if (words.length != pattern.length()) return false;
@@ -545,7 +533,7 @@ public class Strings {
             counts[t.charAt(i) - 'a']--;
         }
 
-        for(int count : counts){
+        for (int count : counts) {
             if (count != 0) return false;
         }
 
@@ -560,12 +548,12 @@ public class Strings {
             map.put(s, map.getOrDefault(s, 0) + 1);
         }
 
-        for(String str : arr){
-            if (map.get(str) == 1){
+        for (String str : arr) {
+            if (map.get(str) == 1) {
                 k--;
             }
 
-            if (k == 0){
+            if (k == 0) {
                 return str;
             }
         }
@@ -655,5 +643,6 @@ public class Strings {
 
         return -1;
     }
+
 
 }
