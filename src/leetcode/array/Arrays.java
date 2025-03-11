@@ -3203,4 +3203,24 @@ public class Arrays {
         return answer;
     }
 
+    public boolean uniqueOccurrences(int[] arr) {
+
+        Map<Integer, Integer> occurrences = new HashMap<>();
+
+        Set<Integer> occurrencesSet = new HashSet<>();
+
+        for (int num : arr){
+            occurrences.put(num, occurrences.getOrDefault(num, 0) + 1);
+        }
+
+        for (Map.Entry<Integer, Integer> entry : occurrences.entrySet()) {
+            if (occurrencesSet.contains(entry.getValue())) {
+                return false;
+            }
+            occurrencesSet.add(entry.getValue());
+        }
+
+        return true;
+    }
+
 }
