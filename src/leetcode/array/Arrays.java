@@ -3167,4 +3167,26 @@ public class Arrays {
         return maxAverage;
     }
 
+    public boolean containsNearbyAlmostDuplicate(int[] nums, int indexDiff, int valueDiff) {
+
+        int n = nums.length;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (Math.abs(i - j) <= indexDiff && Math.abs(nums[i] - nums[j]) <= valueDiff) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public int maxOperations(int[] nums, int k) {
+
+        
+
+        return 0;
+    }
+
 }
