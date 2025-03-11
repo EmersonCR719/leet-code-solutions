@@ -3184,9 +3184,23 @@ public class Arrays {
 
     public int maxOperations(int[] nums, int k) {
 
-        
+        int left = 0, right = nums.length - 1, answer = 0;
 
-        return 0;
+        java.util.Arrays.sort(nums);
+
+        while (left < right) {
+            if (nums[left] + nums[right] == k) {
+                answer++;
+                left++;
+                right--;
+            }else if (nums[left] + nums[right] > k) {
+                right--;
+            }else {
+                left++;
+            }
+        }
+
+        return answer;
     }
 
 }
