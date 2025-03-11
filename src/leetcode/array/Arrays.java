@@ -3218,12 +3218,23 @@ public class Arrays {
         return true;
     }
 
-    public boolean closeStrings(String word1, String word2) {
+    public boolean increasingTriplet(int[] nums) {
 
-        if (word1.length() != word2.length()) return false;
+        int first = (int) 1e9, second = (int) 1e9;
 
+        for (int num : nums) {
+            if (num <= first) {
+                first = num;
+            } else if (num <= second) {
+                second = num;
+            } else {
+                return true;
+            }
+        }
 
         return false;
     }
+
+    
 
 }
