@@ -1598,28 +1598,23 @@ public class Arrays {
 
     public boolean canPlaceFlowers(int[] flowerbed, int n) {
 
-        int countOnes = 0;
+        int count = 0;
 
         for (int i = 0; i < flowerbed.length; i++) {
 
-            if (flowerbed[i] == 1) {
-                countOnes++;
+            if (flowerbed[i] == 0) {
+                boolean emptyLeftPlot = (i == 0) || (flowerbed[i - 1] == 0);
+
+                boolean emptyRightPlot = (i == flowerbed.length - 1) || (flowerbed[i + 1] == 0);
+
+                if (emptyLeftPlot && emptyRightPlot) {
+                    flowerbed[i] = 1;
+                    count++;
+                }
             }
         }
-        /*
-        Input: flowerbed = [1,0,0,0,1], n = 2
-        Output: false
 
-        [1,0,0,0,0,1]
-        n = 2
-        */
-        int plots = flowerbed.length - countOnes;
-
-        if (plots * 3 > n) {
-            return true;
-        } else {
-            return false;
-        }
+        return count >= n;
     }
 
     public int sumIndicesWithKSetBits(List<Integer> nums, int k) {
@@ -3159,8 +3154,8 @@ public class Arrays {
         maxAverage = (double) sum / k;
 
         for (int i = k; i < n; i++) {
-            sum = sum - nums[i -k] + nums[i];
-            maxAverage = Math.max(maxAverage,(double) sum/k);
+            sum = sum - nums[i - k] + nums[i];
+            maxAverage = Math.max(maxAverage, (double) sum / k);
         }
 
 
@@ -3193,9 +3188,9 @@ public class Arrays {
                 answer++;
                 left++;
                 right--;
-            }else if (nums[left] + nums[right] > k) {
+            } else if (nums[left] + nums[right] > k) {
                 right--;
-            }else {
+            } else {
                 left++;
             }
         }
@@ -3209,7 +3204,7 @@ public class Arrays {
 
         Set<Integer> occurrencesSet = new HashSet<>();
 
-        for (int num : arr){
+        for (int num : arr) {
             occurrences.put(num, occurrences.getOrDefault(num, 0) + 1);
         }
 
@@ -3221,6 +3216,14 @@ public class Arrays {
         }
 
         return true;
+    }
+
+    public boolean closeStrings(String word1, String word2) {
+
+        if (word1.length() != word2.length()) return false;
+
+
+        return false;
     }
 
 }
