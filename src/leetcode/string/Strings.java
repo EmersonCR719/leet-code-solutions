@@ -644,5 +644,35 @@ public class Strings {
         return -1;
     }
 
+    public int compress(char[] chars) {
+
+        int read = 0, write = 0, n = chars.length;
+
+        while(read < n) {
+
+            char currentChar = chars[read];
+            int count = 0;
+
+            //Contar cuantas veces aparece el mismo carácter
+            while(read < n && chars[read] == currentChar) {
+                read++;
+                count++;
+            }
+
+            //Escribir el carácter en la posicion correcta
+            chars[write++] = currentChar;
+
+            //Si hay más de una aparición escribir el número
+            if (count > 1) {
+                for (char c : String.valueOf(count).toCharArray()) {
+                    chars[write++] = c;
+                }
+            }
+
+        }
+
+        return write;
+    }
+
 
 }
