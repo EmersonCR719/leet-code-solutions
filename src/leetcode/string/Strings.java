@@ -175,12 +175,12 @@ public class Strings {
             isVowel[c] = true;
         }
 
-        while (left < right){
-            if (!isVowel[chars[left]]){
+        while (left < right) {
+            if (!isVowel[chars[left]]) {
                 left++;
-            }else if (!isVowel[chars[right]]){
+            } else if (!isVowel[chars[right]]) {
                 right--;
-            }else {
+            } else {
                 char temp = chars[left];
                 chars[left] = chars[right];
                 chars[right] = temp;
@@ -648,13 +648,13 @@ public class Strings {
 
         int read = 0, write = 0, n = chars.length;
 
-        while(read < n) {
+        while (read < n) {
 
             char currentChar = chars[read];
             int count = 0;
 
             //Contar cuantas veces aparece el mismo carácter
-            while(read < n && chars[read] == currentChar) {
+            while (read < n && chars[read] == currentChar) {
                 read++;
                 count++;
             }
@@ -674,5 +674,29 @@ public class Strings {
         return write;
     }
 
+    public String removeStars(String s) {
+        /*
+        Stack<Character> stack = new Stack<>();
+        char[] chars = s.toCharArray();
+        for (char c : chars) {
+            if (c == '*') {
+                stack.pop();
+            }else {
+                stack.push(c);
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        for (Character c : stack) {
+            sb.append(c);
+        }
+        return sb.toString();
+         */
 
+        StringBuilder stack = new StringBuilder();
+        for (char c : s.toCharArray()) {
+            if (c == '*') stack.deleteCharAt(stack.length() - 1);
+            else stack.append(c);
+        }
+        return stack.toString();
+    }
 }
