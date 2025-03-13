@@ -3251,25 +3251,25 @@ public class Arrays {
 
         Stack<Integer> stack = new Stack<>();
 
-        for (int asteroid : asteroids){
-
+        for (int asteroid : asteroids) {
             boolean destroyed = false;
 
-            while (!stack.isEmpty() && asteroid < 0 && stack.peek() > 0){
+            while (!stack.isEmpty() && asteroid < 0 && stack.peek() > 0) {
+                // Comparamos el asteroide negativo con el positivo en la cima de la pila
                 if (Math.abs(asteroid) > stack.peek()) {
-                    stack.pop();
-                    continue;
+                    stack.pop(); // El positivo explota
+                    continue; // Seguimos evaluando el asteroide negativo con el siguiente
                 } else if (Math.abs(asteroid) == stack.peek()) {
-                    stack.pop();
+                    stack.pop(); // Ambos explotan
                     destroyed = true;
                     break;
-                }else {
-                    destroyed = true;
+                } else {
+                    destroyed = true; // El asteroide negativo explota
                     break;
                 }
             }
 
-            if (!destroyed){
+            if (!destroyed) {
                 stack.push(asteroid);
             }
         }
