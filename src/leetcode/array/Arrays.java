@@ -3247,4 +3247,34 @@ public class Arrays {
         return Math.max(pos, neg);
     }
 
+    public int[] asteroidCollision(int[] asteroids) {
+
+        Stack<Integer> stack = new Stack<>();
+
+        for (int asteroid : asteroids){
+
+            boolean destroyed = false;
+
+            while (!stack.isEmpty() && asteroid < 0 && stack.peek() > 0){
+                if (Math.abs(asteroid) > stack.peek()) {
+                    stack.pop();
+                    continue;
+                } else if (Math.abs(asteroid) == stack.peek()) {
+                    stack.pop();
+                    destroyed = true;
+                    break;
+                }else {
+                    destroyed = true;
+                    break;
+                }
+            }
+
+            if (!destroyed){
+                stack.push(asteroid);
+            }
+        }
+
+        return stack.stream().mapToInt(i -> i).toArray();
+    }
+
 }
