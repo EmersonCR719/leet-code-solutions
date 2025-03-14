@@ -3277,4 +3277,39 @@ public class Arrays {
         return stack.stream().mapToInt(i -> i).toArray();
     }
 
+    public int[] pivotArray(int[] nums, int pivot) {
+
+        int n = nums.length;
+
+        int[] ans = new int[n];
+
+        int numLower = 0, numEquals = 0;
+
+        for (int num : nums) {
+            if (num < pivot){
+                numLower++;
+            }else if (num == pivot){
+                numEquals++;
+            }
+        }
+
+        //Posiciones iniciales de ans
+        int lowerIndex = 0;
+        int middleIndex = numLower;
+        int higherIndex = numLower + numEquals;
+
+
+        for (int i = 0; i < n; i++) {
+            if (nums[i] < pivot){
+                ans[lowerIndex++] = nums[i];
+            } else if (nums[i] == pivot) {
+                ans[middleIndex++] = nums[i];
+            }else {
+                ans[higherIndex++] = nums[i];
+            }
+        }
+
+        return ans;
+    }
+
 }
