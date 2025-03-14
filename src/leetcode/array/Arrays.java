@@ -3334,4 +3334,26 @@ public class Arrays {
         return result;
     }
 
+    public int[] getFinalState(int[] nums, int k, int multiplier) {
+
+        int iteration = 0;
+
+        while(iteration < k){
+
+            int minNum = nums[0];
+            int idxMin = 0;
+
+            for (int i = 1; i < nums.length; i++) {
+                if (nums[i] < minNum) {
+                    minNum = nums[i];
+                    idxMin = i;
+                }
+            }
+            nums[idxMin] = minNum * multiplier;
+            iteration++;
+        }
+
+        return nums;
+    }
+
 }
