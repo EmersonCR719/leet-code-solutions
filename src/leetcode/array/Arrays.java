@@ -3299,17 +3299,39 @@ public class Arrays {
         int higherIndex = numLower + numEquals;
 
 
-        for (int i = 0; i < n; i++) {
-            if (nums[i] < pivot){
-                ans[lowerIndex++] = nums[i];
-            } else if (nums[i] == pivot) {
-                ans[middleIndex++] = nums[i];
-            }else {
-                ans[higherIndex++] = nums[i];
+        for (int num : nums) {
+            if (num < pivot) {
+                ans[lowerIndex++] = num;
+            } else if (num == pivot) {
+                ans[middleIndex++] = num;
+            } else {
+                ans[higherIndex++] = num;
             }
         }
 
         return ans;
+    }
+
+    public int[] transformArray(int[] nums) {
+
+        int[] result = new int[nums.length];
+        int odd = 0;
+
+        for (int num : nums) {
+            if (num % 2 != 0) odd++;
+        }
+
+        int oddIndex = nums.length - odd;
+
+        for (int evenIndex = 0; evenIndex < oddIndex; evenIndex++) {
+            result[evenIndex] = 0;
+        }
+
+        for (; oddIndex < nums.length; oddIndex++) {
+            result[oddIndex] = 1;
+        }
+
+        return result;
     }
 
 }
