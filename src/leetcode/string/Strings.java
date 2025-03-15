@@ -699,4 +699,20 @@ public class Strings {
         }
         return stack.toString();
     }
+
+    public boolean areOccurrencesEqual(String s) {
+
+        int[] freq = new int[26];
+
+        for (char c : s.toCharArray()) {
+            freq[c - 'a']++;
+        }
+
+        int prev = freq[s.charAt(0) - 'a'];
+
+        for (int freqVal : freq) {
+            if (freqVal != 0 && prev != freqVal) return false;
+        }
+        return true;
+    }
 }
