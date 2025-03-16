@@ -944,10 +944,26 @@ public class Arrays {
     }
 
     public int countMatches(List<List<String>> items, String ruleKey, String ruleValue) {
-        for (int i = 0; i < items.size(); i++) {
 
+        int indexKey;
+
+        if (ruleKey.equals("type")) {
+            indexKey = 0;
+        } else if (ruleKey.equals("color")) {
+            indexKey = 1;
+        } else {
+            indexKey = 2;
         }
-        return 0;
+
+        int count = 0;
+
+        for (List<String> item : items) {
+            if (item.get(indexKey).equals(ruleValue)) {
+                count++;
+            }
+        }
+
+        return count;
     }
 
     public boolean canBeIncreasing(int[] nums) {
@@ -3269,9 +3285,9 @@ public class Arrays {
         int numLower = 0, numEquals = 0;
 
         for (int num : nums) {
-            if (num < pivot){
+            if (num < pivot) {
                 numLower++;
-            }else if (num == pivot){
+            } else if (num == pivot) {
                 numEquals++;
             }
         }
@@ -3321,7 +3337,7 @@ public class Arrays {
 
         int iteration = 0;
 
-        while(iteration < k){
+        while (iteration < k) {
 
             int minNum = nums[0];
             int idxMin = 0;
@@ -3338,5 +3354,6 @@ public class Arrays {
 
         return nums;
     }
+
 
 }
