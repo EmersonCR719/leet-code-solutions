@@ -2068,10 +2068,12 @@ public class Arrays {
 
         int[] answer = new int[2];
 
-        Map<Integer, Integer> map = new HashMap<>();
+        int left = 0, right = 0;
 
         for (int i = 0; i < nums1.length; i++) {
-            map.put(nums1[i], i);
+            for (int j = 0; j < nums2.length; j++) {
+                //CONTINUARÁ
+            }
         }
 
 
@@ -3353,6 +3355,36 @@ public class Arrays {
         }
 
         return nums;
+    }
+
+    public boolean divideArray(int[] nums) {
+        /*
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int num : nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+
+        for (int num : nums) {
+            if (map.get(num) % 2 !=  0) {
+                return false;
+            }
+        }
+
+        return true;
+         */
+
+        int[] freq = new int[501];
+
+        for (int num : nums){
+            freq[num]++;
+        }
+
+        for (int num : nums) {
+            if (freq[num] % 2 != 0) return false;
+        }
+
+        return true;
     }
 
 
