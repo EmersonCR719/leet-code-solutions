@@ -3414,4 +3414,23 @@ public class Arrays {
         return nums;
     }
 
+    public int[][] sortTheStudents(int[][] score, int k) {
+        /*
+        With lambda suppressions
+        java.util.Arrays.sort(score, (a, b) -> b[k] - a[k]);
+        return score;
+         */
+
+        //Without lambda suppressions
+        java.util.Arrays.sort(score, new Comparator<int[]>() {
+
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                return o2[k] - o1[k];
+            }
+        });
+
+        return score;
+    }
+
 }
