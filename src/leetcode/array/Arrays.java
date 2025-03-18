@@ -3423,7 +3423,6 @@ public class Arrays {
 
         //Without lambda suppressions
         java.util.Arrays.sort(score, new Comparator<int[]>() {
-
             @Override
             public int compare(int[] o1, int[] o2) {
                 return o2[k] - o1[k];
