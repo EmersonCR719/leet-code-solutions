@@ -86,4 +86,11 @@ public class BitManipulation {
         */
         return n > 0 && (n & (n - 1)) == 0;
     }
+
+    public boolean isPowerOfFour(int n) {
+        // 0x5 = 0101 (en binario)
+        // 0x55555555 = 0101 0101 0101 0101 0101 0101 0101 0101 (en binario)
+        // 0x55555555 = 1431655765 (en decimal)
+        return n > 0 && (n & (n - 1)) == 0 && (n & 0x55555555) != 0;
+    }
 }
