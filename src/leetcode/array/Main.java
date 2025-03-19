@@ -1,5 +1,8 @@
 package leetcode.array;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -12,7 +15,9 @@ public class Main {
 
         String s1 = "abcd", s2 = "dcba";
 
-        System.out.println(arr.increasingTriplet(nums2));
+        List<String> list = new ArrayList<>(List.of("one.two.three"));
+
+        System.out.println(arr.splitWordsBySeparator(list, '.'));
 
     }
 }

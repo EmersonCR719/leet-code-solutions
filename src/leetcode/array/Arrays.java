@@ -1168,15 +1168,23 @@ public class Arrays {
 
     public List<String> splitWordsBySeparator(List<String> words, char separator) {
 
-        ArrayList<String> answer = new ArrayList<>();
+        List<String> answer = new ArrayList<>();
 
-        StringBuilder stringBuilder = new StringBuilder();
-
-        for (int i = 0; i < words.size(); i++) {
-            stringBuilder.append(words.get(i));
-            String string = stringBuilder.toString();
-            String[] split = string.split(String.valueOf(separator));
-
+        for (String word : words) {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < word.length(); i++) {
+                if (word.charAt(i) != separator) {
+                    sb.append(word.charAt(i));
+                }else{
+                    if (!sb.isEmpty()) {
+                        answer.add(sb.toString());
+                        sb.setLength(0);
+                    }
+                }
+            }
+            if (!sb.isEmpty()) {
+                answer.add(sb.toString());
+            }
         }
 
         return answer;
