@@ -3432,4 +3432,20 @@ public class Arrays {
         return score;
     }
 
+    public int finalPositionOfSnake(int n, List<String> commands) {
+
+        int row = 0, col = 0;
+        //"UP", "RIGHT", "DOWN", and "LEFT"
+        for (String command : commands) {
+            switch (command.charAt(0)) {
+                case 'U' -> row--;
+                case 'R' -> col++;
+                case 'D' -> row++;
+                default -> col--;
+            }
+        }
+
+        return (row * n) + col;
+    }
+
 }
