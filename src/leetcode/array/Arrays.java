@@ -1175,7 +1175,7 @@ public class Arrays {
             for (int i = 0; i < word.length(); i++) {
                 if (word.charAt(i) != separator) {
                     sb.append(word.charAt(i));
-                }else{
+                } else {
                     if (!sb.isEmpty()) {
                         answer.add(sb.toString());
                         sb.setLength(0);
@@ -1198,11 +1198,7 @@ public class Arrays {
 
         StringBuilder stringBuilder = new StringBuilder(word);
 
-        if (stringBuilder.reverse().toString().compareTo(word) == 0) {
-            return true;
-        }
-
-        return false;
+        return stringBuilder.reverse().toString().compareTo(word) == 0;
     }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
@@ -3384,7 +3380,7 @@ public class Arrays {
 
         int[] freq = new int[501];
 
-        for (int num : nums){
+        for (int num : nums) {
             freq[num]++;
         }
 
@@ -3454,6 +3450,49 @@ public class Arrays {
         }
 
         return (row * n) + col;
+    }
+
+    public int countStudents(int[] students, int[] sandwiches) {
+        /*
+        Queue<Integer> queue = new LinkedList<>();
+        int countZero = 0, countOne = 0;
+        for (int student : students) {
+            queue.add(student);
+            if (student == 0) countZero++;
+            else countOne++;
+        }
+        for (int sandwich : sandwiches) {
+            if (sandwich == 0 && countZero > 0) {
+                countZero--;
+                queue.poll();
+            } else if (sandwich == 1 && countOne > 0) {
+                countOne--;
+                queue.poll();
+            } else {
+                break;
+            }
+        }
+        return countOne + countZero;
+         */
+
+        int countZero = 0, countOne = 0;
+
+        for (int student : students) {
+            if (student == 0) countZero++;
+            else countOne++;
+        }
+
+        for (int sandwich : sandwiches) {
+            if (sandwich == 0 && countZero > 0)
+                countZero--;
+            else if (sandwich == 1 && countOne > 0) {
+                countOne--;
+            } else {
+                break;
+            }
+        }
+
+        return countOne + countZero;
     }
 
 }
