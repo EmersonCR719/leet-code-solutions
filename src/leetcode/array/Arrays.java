@@ -3495,4 +3495,27 @@ public class Arrays {
         return countOne + countZero;
     }
 
+    public int minElement(int[] nums) {
+
+        int minElement = (int) 10e9;
+
+        for (int num : nums) {
+            minElement = Math.min(minElement, sumOfDigits(num));
+        }
+
+        return minElement;
+    }
+
+    public int sumOfDigits(int num){
+        int sum = 0;
+
+        while (num > 0) {
+            int lastDigit = num % 10;
+            sum = sum + lastDigit;
+            num /= 10;
+        }
+
+        return sum;
+    }
+
 }
