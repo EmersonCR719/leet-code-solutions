@@ -2070,18 +2070,32 @@ public class Arrays {
 
     public int[] findIntersectionValues(int[] nums1, int[] nums2) {
 
-        int[] answer = new int[2];
+        int count1 = 0, count2 = 0;
 
-        int left = 0, right = 0;
+        Set<Integer> set1 = new HashSet<>();
+        Set<Integer> set2 = new HashSet<>();
 
-        for (int i = 0; i < nums1.length; i++) {
-            for (int j = 0; j < nums2.length; j++) {
-                //CONTINUARÁ
+        for (int num : nums1){
+            set1.add(num);
+        }
+
+        for (int num : nums2){
+            set2.add(num);
+        }
+
+        for (int num : nums1){
+            if (set2.contains(num)){
+                count1++;
             }
         }
 
+        for (int num : nums2){
+            if (set1.contains(num)){
+                count2++;
+            }
+        }
 
-        return answer;
+        return new int[]{count1, count2};
     }
 
     public int numberOfPairs(int[] nums1, int[] nums2, int k) {
