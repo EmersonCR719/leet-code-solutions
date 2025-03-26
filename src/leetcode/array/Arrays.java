@@ -3532,4 +3532,32 @@ public class Arrays {
         return sum;
     }
 
+    public List<List<Integer>> findMatrix(int[] nums) {
+
+        List<List<Integer>> answer = new ArrayList<>();
+
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int num : nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+
+        int rows = Collections.max(map.values());
+        for (int i = 0; i < rows; i++) {
+            answer.add(new ArrayList<>());
+        }
+
+        var entrys = map.entrySet();
+
+        for (var entry : entrys) {
+            int num = entry.getKey();
+            int freq = entry.getValue();
+            for (int i = 0; i < freq; i++) {
+                answer.get(i).add(num);
+            }
+        }
+
+        return answer;
+    }
+
 }
