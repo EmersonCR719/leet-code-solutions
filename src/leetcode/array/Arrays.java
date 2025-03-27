@@ -3547,9 +3547,7 @@ public class Arrays {
             answer.add(new ArrayList<>());
         }
 
-        var entrys = map.entrySet();
-
-        for (var entry : entrys) {
+        for (var entry : map.entrySet()) {
             int num = entry.getKey();
             int freq = entry.getValue();
             for (int i = 0; i < freq; i++) {
@@ -3558,6 +3556,17 @@ public class Arrays {
         }
 
         return answer;
+    }
+
+    public int maxCoins(int[] piles) {
+
+        int sum = 0;
+
+        java.util.Arrays.sort(piles);
+
+        for (int i = piles.length / 3; i < piles.length; i+=2) sum += piles[i];
+
+        return sum;
     }
 
 }
