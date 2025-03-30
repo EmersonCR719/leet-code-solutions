@@ -715,4 +715,20 @@ public class Strings {
         }
         return true;
     }
+
+    public String convertDateToBinary(String date) {
+
+        String year = date.substring(0, 4);
+        String month = date.substring(5, 7);
+        String day = date.substring(8, 10);
+
+        StringBuilder res = new StringBuilder();
+        res.append(Integer.toBinaryString(Integer.parseInt(year)));
+        res.append("-");
+        res.append(Integer.toBinaryString(Integer.parseInt(month)));
+        res.append("-");
+        res.append(Integer.toBinaryString(Integer.parseInt(day)));
+
+        return res.toString();
+    }
 }

@@ -16,6 +16,8 @@ public class StringMain {
 
         System.out.println(strings.wordPattern(pattern,s));
 
+        System.out.println(strings.convertDateToBinary("2080-02-29"));
+
     }
 
     public static void imprimirDesdeNHasta100(int n){
