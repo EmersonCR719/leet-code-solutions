@@ -731,4 +731,27 @@ public class MathAlgoritms {
         return counter == 3;
     }
 
+    public int findGCD(int[] nums) {
+
+        int lower = (int) 10e9, upper = -(int) 10e9, greatest = -(int) 10e9;
+
+        for (int num : nums) {
+            lower = Math.min(lower, num);
+        }
+
+        for (int num : nums) {
+            upper = Math.max(upper, num);
+        }
+
+        int iterator = 1;
+        while (iterator <= lower) {
+            if (lower % iterator == 0 && upper % iterator == 0) {
+                greatest = Math.max(iterator, greatest);
+            }
+            iterator++;
+        }
+
+        return greatest;
+    }
+
 }

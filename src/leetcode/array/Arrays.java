@@ -1102,19 +1102,6 @@ public class Arrays {
         return sumMax;
     }
 
-    public int findGCD(int[] nums) {
-        int mn = 0, mx = 0;
-
-        java.util.Arrays.sort(nums);
-
-        mn = nums[0];                               //FALTA TERMINAR
-        mx = nums[nums.length - 1];
-
-        if (nums.length == 2 && mn == mx) return mn;
-
-        return greatestCommunDivisor(mn, mx);
-    }
-
     public int greatestCommunDivisor(int a, int b) {
         int greatest = 0;
         int i = 1;
