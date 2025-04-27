@@ -771,4 +771,34 @@ public class MathAlgoritms {
         }
     }
 
+    public int reverseNumX(int x) {
+        long s = 0;
+        while(x!=0){
+            int r = x%10;
+            s = s*10+r;
+            x = x/10;
+        }
+        if(s>=Integer.MAX_VALUE || s<=Integer.MIN_VALUE){
+            return 0;
+        }
+        return (int)s;
+    }
+
+    public int countDistinctIntegers(int[] nums) {
+
+        List<Integer> allNums = new ArrayList<>();
+
+        for (int num : nums) {
+            allNums.add(num);
+        }
+
+        for (int num : nums) {
+            allNums.add(reverseNumX(num));
+        }
+
+        Set<Integer> set = new HashSet<>(allNums);
+
+        return set.size();
+    }
+
 }
