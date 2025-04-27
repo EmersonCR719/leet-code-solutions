@@ -18,5 +18,10 @@ public class MathMain {
         int[][] points = {{1,1},{2,2},{3,3}};
 
         System.out.println(mathAlgoritms.isHappy(1111111));
+
+        // Test the sum method
+        int num1 = 5;
+        int num2 = 7;
+        System.out.println("Sum of " + num1 + " and " + num2 + " is: " + mathAlgoritms.sum(num1, num2));
     }
 }

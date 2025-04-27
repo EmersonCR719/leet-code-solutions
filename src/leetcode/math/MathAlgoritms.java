@@ -640,7 +640,7 @@ public class MathAlgoritms {
 
         for (int i = 0; i < points.length; i++) {
             for (int j = 0; j < points[i].length; j++) {
-                System.out.print(points[i][j]+" ");
+                System.out.print(points[i][j] + " ");
             }
             System.out.println();
         }
@@ -648,7 +648,7 @@ public class MathAlgoritms {
         return count;
     }
 
-    public int translate(char c){
+    public int translate(char c) {
         return switch (c) {
             case 'I' -> 1;
             case 'V' -> 5;
@@ -668,9 +668,9 @@ public class MathAlgoritms {
         for (int i = 1; i < s.length(); i++) {
             int next = translate(s.charAt(i));
 
-            if (current < next){
+            if (current < next) {
                 sum -= current;
-            }else{
+            } else {
                 sum += current;
             }
             current = next;
@@ -695,7 +695,7 @@ public class MathAlgoritms {
                         closestB = candidate;
                     }
                     // Twin prime optimization
-                    if (difference == 2 || difference == 1) return new int[] {
+                    if (difference == 2 || difference == 1) return new int[]{
                             prevPrime,
                             candidate,
                     };
@@ -705,11 +705,11 @@ public class MathAlgoritms {
         }
 
         return (closestA == -1)
-                ? new int[] { -1, -1 }
-                : new int[] { closestA, closestB };
+                ? new int[]{-1, -1}
+                : new int[]{closestA, closestB};
     }
 
-    public boolean isPrime(int number){
+    public boolean isPrime(int number) {
         if (number < 2) return false;
         if (number == 2 || number == 3) return true;
         if (number % 2 == 0) return false;
@@ -764,24 +764,24 @@ public class MathAlgoritms {
 
         if (Math.abs(z - x) == Math.abs(z - y)) {
             return 0;
-        }else if (Math.abs(z - x) > Math.abs(z - y)) {
+        } else if (Math.abs(z - x) > Math.abs(z - y)) {
             return 1;
-        }else {
+        } else {
             return 2;
         }
     }
 
     public int reverseNumX(int x) {
         long s = 0;
-        while(x!=0){
-            int r = x%10;
-            s = s*10+r;
-            x = x/10;
+        while (x != 0) {
+            int r = x % 10;
+            s = s * 10 + r;
+            x = x / 10;
         }
-        if(s>=Integer.MAX_VALUE || s<=Integer.MIN_VALUE){
+        if (s >= Integer.MAX_VALUE || s <= Integer.MIN_VALUE) {
             return 0;
         }
-        return (int)s;
+        return (int) s;
     }
 
     public int countDistinctIntegers(int[] nums) {
@@ -799,6 +799,16 @@ public class MathAlgoritms {
         Set<Integer> set = new HashSet<>(allNums);
 
         return set.size();
+    }
+
+    public boolean canAliceWin(int[] nums) {
+
+        int sumSingleDigit = 0, doubleDigit = 0;
+        for (int num : nums) {
+            if (num <= 9) sumSingleDigit += num;
+            else doubleDigit += num;
+        }
+        return sumSingleDigit != doubleDigit;
     }
 
 }
