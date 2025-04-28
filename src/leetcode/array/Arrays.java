@@ -3556,4 +3556,16 @@ public class Arrays {
         return sum;
     }
 
+    public int subarraySum(int[] nums) {
+        int sumMax = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            int start = Math.max(0, i - nums[i]);
+            for (int j = start; j <= i; j++) {
+                sumMax += nums[j];
+            }
+        }
+
+        return sumMax;
+    }
 }

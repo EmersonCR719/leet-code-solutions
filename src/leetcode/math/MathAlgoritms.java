@@ -778,7 +778,6 @@ public class MathAlgoritms {
         return sumSingleDigit != doubleDigit;
     }
 
-
     public int reverse(int x) {
         return reverseNumX(x);
     }
