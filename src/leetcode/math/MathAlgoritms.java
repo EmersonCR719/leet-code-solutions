@@ -493,39 +493,6 @@ public class MathAlgoritms {
         return primeFactors.size();
     }
 
-    public int reverse(int x) {
-
-        int answer;
-
-        StringBuilder sb = new StringBuilder();
-
-        sb.append(x);
-
-        String sign = x < 0 ? "-" : "";
-
-        sb.deleteCharAt(0);
-
-        sb.reverse();
-
-        StringBuilder sb2 = new StringBuilder();
-
-        if (!sign.isEmpty()) {
-            sb2.append(sign);
-            sb2.append(sb);
-        }
-
-        for (int i = 0; i < sb2.length(); i++) {
-            if (sb2.charAt(i) == '0') {
-                sb2.deleteCharAt(i);
-            }
-            if (sb2.charAt(i) != '0') {
-                break;
-            }
-        }
-
-        return Integer.parseInt(sb2.toString());
-    }
-
     public int[] intersect(int[] nums1, int[] nums2) {
 
         ArrayList<Integer> nums = new ArrayList<>();
@@ -772,16 +739,16 @@ public class MathAlgoritms {
     }
 
     public int reverseNumX(int x) {
-        long s = 0;
+        long reverse = 0;
         while (x != 0) {
             int r = x % 10;
-            s = s * 10 + r;
+            reverse = reverse * 10 + r;
             x = x / 10;
         }
-        if (s >= Integer.MAX_VALUE || s <= Integer.MIN_VALUE) {
+        if (reverse >= Integer.MAX_VALUE || reverse <= Integer.MIN_VALUE) {
             return 0;
         }
-        return (int) s;
+        return (int) reverse;
     }
 
     public int countDistinctIntegers(int[] nums) {
@@ -810,5 +777,11 @@ public class MathAlgoritms {
         }
         return sumSingleDigit != doubleDigit;
     }
+
+
+    public int reverse(int x) {
+        return reverseNumX(x);
+    }
+
 
 }
