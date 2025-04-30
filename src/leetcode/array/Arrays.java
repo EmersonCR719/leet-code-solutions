@@ -180,8 +180,7 @@ public class Arrays {
     public int findNumbers(int[] nums) {
         int evenNumber = 0;
         for (int j : nums) {
-            String num = Integer.toString(j);
-            if (num.length() % 2 == 0) {
+            if ((j > 9 && j < 100) || (j > 999 && j < 10000) || (j > 99999 && j < 1000000)) {
                 evenNumber++;
             }
         }
