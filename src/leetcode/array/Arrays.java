@@ -3580,4 +3580,37 @@ public class Arrays {
         }
         return ret;
     }
+
+    public int[] findEvenNumbers(int[] digits) {
+
+        Set<Integer> set = new TreeSet<>();
+        int n = digits.length;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (j == i) continue;
+                for (int k = 0; k < n; k++) {
+                    if (k == i || k == j) continue;
+
+                    int a = digits[i];
+                    int b = digits[j];
+                    int c = digits[k];
+
+                    if (a == 0) continue;
+                    if (c % 2 != 0) continue;
+
+                    int num = a * 100 + b * 10 + c;
+                    set.add(num);
+                }
+            }
+        }
+
+        int[] answer = new int[set.size()];
+        int index = 0;
+        for (int num : set) {
+            answer[index++] = num;
+        }
+
+        return answer;
+    }
 }
