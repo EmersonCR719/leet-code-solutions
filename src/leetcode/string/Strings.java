@@ -731,4 +731,19 @@ public class Strings {
 
         return res.toString();
     }
+
+    public List<String> getLongestSubsequence(String[] words, int[] groups) {
+
+        List<String> longestSubsequences = new ArrayList<>();
+
+        for (int i = 0; i < words.length; i++) {
+
+            if (i == 0 || groups[i] != groups[i - 1]) {
+                longestSubsequences.add(words[i]);
+            }
+
+        }
+
+        return longestSubsequences;
+    }
 }

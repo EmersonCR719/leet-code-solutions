@@ -789,7 +789,7 @@ public class MathAlgoritms {
         for (char ch : s.toCharArray()) {
             ++cnt[ch - 'a'];
         }
-        
+
         for (int round = 0; round < t; ++round) {
             int[] nxt = new int[26];
             nxt[0] = cnt[25];
