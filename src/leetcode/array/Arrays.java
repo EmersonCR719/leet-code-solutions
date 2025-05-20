@@ -3613,4 +3613,30 @@ public class Arrays {
 
         return answer;
     }
+
+    public boolean isZeroArray(int[] nums, int[][] queries) {
+
+        int n = nums.length;
+
+        int[] delta = new int[n + 1];
+
+        for (int[] query : queries) {
+            int l = query[0];
+            int r = query[1];
+            delta[l] += 1;
+            if (r + 1 < delta.length) {
+                delta[r + 1] -= 1;
+            }
+        }
+
+        int current = 0;
+        for (int i = 0; i < n; i++) {
+            current += delta[i];
+            if (current < nums[i]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
