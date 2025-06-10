@@ -746,4 +746,24 @@ public class Strings {
 
         return longestSubsequences;
     }
+
+    public int maxDifference(String s) {
+
+        Map<Character, Integer> vowelCount = new HashMap<>();
+
+        for (char c : s.toCharArray()) {
+            vowelCount.put(c, vowelCount.getOrDefault(c, 0) + 1);
+        }
+
+        int maxOdd = 1, minEven = s.length();
+
+        for (int value : vowelCount.values()) {
+            if (value % 2 == 1) {
+                maxOdd = Math.max(maxOdd, value);
+            } else {
+                minEven = Math.min(minEven, value);
+            }
+        }
+        return maxOdd - minEven;
+    }
 }
