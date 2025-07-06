@@ -2061,22 +2061,22 @@ public class Arrays {
         Set<Integer> set1 = new HashSet<>();
         Set<Integer> set2 = new HashSet<>();
 
-        for (int num : nums1){
+        for (int num : nums1) {
             set1.add(num);
         }
 
-        for (int num : nums2){
+        for (int num : nums2) {
             set2.add(num);
         }
 
-        for (int num : nums1){
-            if (set2.contains(num)){
+        for (int num : nums1) {
+            if (set2.contains(num)) {
                 count1++;
             }
         }
 
-        for (int num : nums2){
-            if (set1.contains(num)){
+        for (int num : nums2) {
+            if (set1.contains(num)) {
                 count2++;
             }
         }
@@ -3506,7 +3506,7 @@ public class Arrays {
         return minElement;
     }
 
-    public int sumOfDigits(int num){
+    public int sumOfDigits(int num) {
         int sum = 0;
 
         while (num > 0) {
@@ -3550,7 +3550,7 @@ public class Arrays {
 
         java.util.Arrays.sort(piles);
 
-        for (int i = piles.length / 3; i < piles.length; i+=2) sum += piles[i];
+        for (int i = piles.length / 3; i < piles.length; i += 2) sum += piles[i];
 
         return sum;
     }
@@ -3638,5 +3638,20 @@ public class Arrays {
         }
 
         return true;
+    }
+
+    public int findLucky(int[] arr) {
+
+        int[] freq = new int[501];
+
+        for (int i = 0; i < arr.length; i++) freq[arr[i]]++;
+
+        int maxFreqNum = -1;
+
+        for (int i = 1; i < 501; i++) {
+            if (freq[i] == i) maxFreqNum = Math.max(maxFreqNum, i);
+        }
+
+        return maxFreqNum;
     }
 }
