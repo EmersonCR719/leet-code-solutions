@@ -766,4 +766,31 @@ public class Strings {
         }
         return maxOdd - minEven;
     }
+
+    public int maxFreqSum(String s) {
+
+        Map<Character, Integer> vowelCount = new HashMap<>();
+        Map<Character, Integer> consCount = new HashMap<>();
+
+        for (char c : s.toCharArray()) {
+            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'){
+                vowelCount.put(c, vowelCount.getOrDefault(c, 0) + 1);
+            }else {
+                consCount.put(c, consCount.getOrDefault(c, 0) + 1);
+            }
+        }
+
+        int maxFreqVowels = 0;
+        int maxFreqCons = 0;
+
+        for (int value : vowelCount.values()) {
+            maxFreqVowels = Math.max(maxFreqVowels, value);
+        }
+
+        for (int value : consCount.values()) {
+            maxFreqCons = Math.max(maxFreqCons, value);
+        }
+
+        return maxFreqVowels + maxFreqCons;
+    }
 }
