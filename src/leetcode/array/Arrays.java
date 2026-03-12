@@ -874,7 +874,7 @@ public class Arrays {
         }
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] > 0) {
-                answer.add(i+1);
+                answer.add(i + 1);
             }
         }
         return answer;
@@ -3670,7 +3670,7 @@ public class Arrays {
         return maxFreqNum;
     }
 
-    int differenceK(int []arr, int k){
+    int differenceK(int[] arr, int k) {
         int count = 0;
 
         for (int i = 0; i < arr.length - 1; i++) {
@@ -3681,5 +3681,25 @@ public class Arrays {
         }
 
         return count;
+    }
+
+    public int[] findErrorNums(int[] nums) {
+        int[] answer = new int[2];
+
+        for (int i = 0; i < nums.length; i++) {
+            int index = Math.abs(nums[i]) - 1;
+
+            if (nums[index] > 0)
+                nums[index] = -nums[index];
+            else
+                answer[0] = Math.abs(nums[i]);
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] > 0)
+                answer[1] = i + 1;
+        }
+
+        return answer;
     }
 }
